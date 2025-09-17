@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>作品集 | 小糯米</title>
+  <meta name="description" content="專案清單與技術簡述">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="sub-header">
+    <nav class="nav">
+      <a class="logo" href="./">小糯米</a>
+      <ul class="menu inline">
+        <li><a href="./projects.html" class="active">作品集</a></li>
+        <li><a href="./about.html">關於我</a></li>
+      </ul>
+    </nav>
+    <h1>作品集</h1>
+    <p class="sub">把想法具體化到產品原型與技術 Demo。</p>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <article class="card">
+        <img src="assets/placeholder.svg" alt="語音指令專案示意圖">
+        <h3>語音指令燈光控制</h3>
+        <ul class="meta">
+          <li>模型：簡單 CNN</li>
+          <li>資料：Speech Commands</li>
+          <li>結果：測試準確率 94%+</li>
+        </ul>
+        <p>整合麥克風輸入與裝置控制，以最小化延遲為目標。</p>
+        <p><a href="#" target="_blank" rel="noopener">GitHub</a> ・ <a href="#" target="_blank" rel="noopener">文章</a></p>
+      </article>
+
+      <article class="card">
+        <img src="assets/placeholder.svg" alt="YOLO 追蹤專案示意圖">
+        <h3>YOLOv10 + BoT‑SORT 追蹤</h3>
+        <ul class="meta">
+          <li>偵測：YOLOv10</li>
+          <li>追蹤：BoT‑SORT</li>
+          <li>輸出：事件日誌（進/出）</li>
+        </ul>
+        <p>長時間穩定追蹤動物行為，並以時間戳記記錄事件。</p>
+        <p><a href="#" target="_blank" rel="noopener">GitHub</a></p>
+      </article>
+
+      <article class="card">
+        <img src="assets/placeholder.svg" alt="LSTM 語音專案示意圖">
+        <h3>LSTM 語音序列</h3>
+        <ul class="meta">
+          <li>任務：關鍵詞辨識</li>
+          <li>技巧：資料增強、正規化</li>
+          <li>工具：PyTorch</li>
+        </ul>
+        <p>從資料前處理到模型訓練的坑位與復盤。</p>
+        <p><a href="#" target="_blank" rel="noopener">文章</a></p>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <small>© 2025 小糯米</small>
+  </footer>
+</body>
+</html>

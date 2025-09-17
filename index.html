@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小糯米 | 個人網站</title>
+  <meta name="description" content="資料科學 / HCI 作品集與履歷">
+  <meta property="og:title" content="小糯米 | 個人網站">
+  <meta property="og:description" content="資料科學 / HCI 作品集與履歷">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="logo" href="./">小糯米</a>
+      <input id="menu-toggle" type="checkbox" />
+      <label class="menu-button" for="menu-toggle">☰</label>
+      <ul class="menu">
+        <li><a href="./projects.html">作品集</a></li>
+        <li><a href="./about.html">關於我</a></li>
+        <li><a href="#contact">聯絡</a></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <h1>資料科學 × HCI</h1>
+      <p>專注電腦視覺、語音與互動設計。這裡放我的專案、技術筆記與履歷連結。</p>
+      <p class="cta">
+        <a class="btn" href="projects.html">看作品</a>
+        <a class="btn outline" href="about.html">認識我</a>
+      </p>
+    </section>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>代表作品</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>語音辨識開關燈</h3>
+          <p>用 CNN 在 Speech Commands 上達成 94%+ 準確率，並串接裝置控制燈光。</p>
+          <p><a href="#" target="_blank" rel="noopener">專案連結</a></p>
+        </article>
+        <article class="card">
+          <h3>YOLOv10 + BoT‑SORT 多目標追蹤</h3>
+          <p>動物行為追蹤與進出事件偵測，輸出時間序列日誌。</p>
+          <p><a href="#" target="_blank" rel="noopener">閱讀說明 / Demo</a></p>
+        </article>
+        <article class="card">
+          <h3>LSTM 處理語音序列</h3>
+          <p>從特徵工程、資料增強到訓練流程整理的技術筆記。</p>
+          <p><a href="#" target="_blank" rel="noopener">文章</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>聯絡</h2>
+      <p>歡迎來信交流：<a href="mailto:you@example.com">you@example.com</a> ｜
+         <a href="https://github.com/yourid" target="_blank" rel="noopener">GitHub</a> ｜
+         <a href="#" target="_blank" rel="noopener">LinkedIn</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© 2025 小糯米</small>
+  </footer>
+</body>
+</html>
