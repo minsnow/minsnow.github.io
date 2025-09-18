@@ -1,64 +1,171 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About | Emily Tu</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+
+  <!-- Tailwind（啟用 dark mode by class） -->
+  <script>tailwind={config:{darkMode:'class'}};</script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- 字體 -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
         href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700"/>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 </head>
-<body class="bg-slate-50" style='font-family:"Space Grotesk","Noto Sans",sans-serif'>
-  <!-- 共用 Header -->
-  <header class="flex items-center justify-between border-b border-slate-200 px-10 py-3">
-    <div class="flex items-center gap-3 text-slate-900">
-      <div class="size-4"><svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M42.44 44S36.07 33.9 41.17 24 42.21 4 42.21 4H7.01s4.65 8.93-1.03 19.99C0.88 33.9 7.27 44 7.27 44z"/></svg></div>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100"
+      style='font-family:"Space Grotesk","Noto Sans",sans-serif'>
+
+  <!-- Header -->
+  <header id="siteHeader"
+          class="sticky top-0 z-40 flex items-center justify-between border-b border-slate-200/70 bg-white/80 px-4 sm:px-10 py-3 backdrop-blur
+                 dark:bg-slate-900/80 dark:border-slate-800 transition-shadow">
+    <div class="flex items-center gap-3">
+      <div class="size-4 text-slate-700 dark:text-slate-300">
+        <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M42.44 44S36.07 33.9 41.17 24 42.21 4 42.21 4H7.01s4.65 8.93-1.03 19.99C0.88 33.9 7.27 44 7.27 44z"/>
+        </svg>
+      </div>
       <a href="./" class="text-lg font-bold tracking-[-.015em]">Emily Tu</a>
     </div>
-    <nav class="flex items-center gap-8">
-      <a data-nav href="./" class="text-sm font-medium">Home</a>
-      <a data-nav href="./projects.html" class="text-sm font-medium">Projects</a>
-      <a data-nav href="./about.html" class="text-sm font-medium">About</a>
-      <a href="./index.html#contact" class="text-sm font-medium">Contact</a>
-      <a href="./assets/Emily_Tu_Resume.pdf" class="rounded-lg bg-slate-200 h-10 px-4 flex items-center text-sm font-bold" target="_blank" rel="noopener">Resume</a>
+
+    <!-- 導覽 -->
+    <nav id="navMenu" class="hidden sm:flex items-center gap-6">
+      <a data-nav href="./"              class="text-sm font-medium hover:opacity-80">Home</a>
+      <a data-nav href="./projects.html" class="text-sm font-medium hover:opacity-80">Projects</a>
+      <a data-nav href="./about.html"    class="text-sm font-medium hover:opacity-80">About</a>
+      <a           href="./index.html#contact" class="text-sm font-medium hover:opacity-80">Contact</a>
+      <a href="./assets/Emily_Tu_Resume.pdf"
+         class="rounded-lg bg-slate-200 dark:bg-slate-800 h-10 px-4 flex items-center text-sm font-bold hover:opacity-90"
+         target="_blank" rel="noopener">Resume</a>
     </nav>
+
+    <!-- 行動選單 + 主題切換 -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <button id="themeToggle"
+              class="rounded-lg h-10 w-10 grid place-items-center bg-slate-200 dark:bg-slate-800"
+              title="切換深/淺色">🌓</button>
+      <button id="menuBtn"
+              class="sm:hidden rounded-lg h-10 w-10 grid place-items-center bg-slate-200 dark:bg-slate-800"
+              aria-controls="navMenu" aria-expanded="false" title="開關選單">☰</button>
+    </div>
   </header>
 
-  <main class="max-w-[960px] mx-auto px-4 py-6">
-    <div class="flex flex-col sm:flex-row sm:items-center gap-4 p-4">
-      <div class="rounded-full min-h-32 w-32 bg-center bg-cover"
-           style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7p9IQZ2ma7J-3sf3b4VApuuNti6d7wM7hadtbytovOoA7Za036enlVvjxpfoQN-FFcr61BT4CSUyGjDmxuD8aji4DZQYDG9QaFXDTYtAWz6dizZ7yHWtVBo_x4CUYZkskEP-V0_o_mQFlnsO5L3QxrCF4-31dNB-v6WxolOlY7Yt7gF5v9DAoOTeCt9e66I4_cp0oS28iXC703AqOXhSIei7wr5ts7l5TD7LKjBZiOCP6HynYHf-aSxgPMWvjUbP7KDsqnABakCo");'></div>
+  <main class="max-w-[960px] mx-auto px-4 py-8">
+    <!-- 個人資訊 -->
+    <section data-reveal class="flex flex-col sm:flex-row sm:items-center gap-4 p-4">
+      <div class="rounded-full min-h-32 w-32 bg-center bg-cover ring-2 ring-slate-200 dark:ring-slate-700"
+           style='background-image:url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7p9IQZ2ma7J-3sf3b4VApuuNti6d7wM7hadtbytovOoA7Za036enlVvjxpfoQN-FFcr61BT4CSUyGjDmxuD8aji4DZQYDG9QaFXDTYtAWz6dizZ7yHWtVBo_x4CUYZkskEP-V0_o_mQFlnsO5L3QxrCF4-31dNB-v6WxolOlY7Yt7gF5v9DAoOTeCt9e66I4_cp0oS28iXC703AqOXhSIei7wr5ts7l5TD7LKjBZiOCP6HynYHf-aSxgPMWvjUbP7KDsqnABakCo");'>
+      </div>
       <div>
         <h1 class="text-2xl font-bold tracking-[-.015em]">Emily Tu</h1>
-        <p class="text-sky-700">Data Science / HCI — Taipei, Taiwan</p>
+        <p class="text-sky-700 dark:text-sky-400">Data Science / HCI — Taipei, Taiwan</p>
       </div>
-    </div>
+    </section>
 
-    <p class="px-4 text-slate-900">I’m into computer vision, audio KWS, and interaction prototyping. I like shipping tiny but useful demos and writing concise notes.</p>
+    <section data-reveal class="px-4 pt-2 pb-1">
+      <p class="text-slate-700 dark:text-slate-300">
+        I’m into computer vision, audio KWS, and interaction prototyping. I like shipping tiny but useful demos and writing concise notes.
+      </p>
+    </section>
 
-    <h2 class="text-2xl font-bold px-4 pt-6 pb-2">Skills</h2>
-    <div class="space-y-3 px-4 pb-10">
+    <!-- 技能 -->
+    <section data-reveal class="px-4 pt-8 pb-2">
+      <h2 class="text-2xl font-bold">Skills</h2>
+    </section>
+
+    <section data-reveal class="space-y-5 px-4 pb-12">
+      <!-- 進度條會在進場時動畫至 data-pct% -->
       <div>
-        <div class="flex justify-between"><span>Python / PyTorch</span><span>90%</span></div>
-        <div class="h-2 bg-slate-200 rounded"><div class="h-2 bg-sky-500 rounded" style="width:90%"></div></div>
+        <div class="flex justify-between mb-1">
+          <span>Python / PyTorch</span><span>90%</span>
+        </div>
+        <div class="h-2 rounded bg-slate-200 dark:bg-slate-700 overflow-hidden">
+          <div class="js-skill h-2 rounded bg-sky-500 dark:bg-sky-400 w-0 transition-[width] duration-700 ease-out" data-pct="90"></div>
+        </div>
       </div>
+
       <div>
-        <div class="flex justify-between"><span>OpenCV / MediaPipe</span><span>85%</span></div>
-        <div class="h-2 bg-slate-200 rounded"><div class="h-2 bg-sky-500 rounded" style="width:85%"></div></div>
+        <div class="flex justify-between mb-1">
+          <span>OpenCV / MediaPipe</span><span>85%</span>
+        </div>
+        <div class="h-2 rounded bg-slate-200 dark:bg-slate-700 overflow-hidden">
+          <div class="js-skill h-2 rounded bg-sky-500 dark:bg-sky-400 w-0 transition-[width] duration-700 ease-out" data-pct="85"></div>
+        </div>
       </div>
+
       <div>
-        <div class="flex justify-between"><span>UI/UX & Prototyping</span><span>80%</span></div>
-        <div class="h-2 bg-slate-200 rounded"><div class="h-2 bg-sky-500 rounded" style="width:80%"></div></div>
+        <div class="flex justify-between mb-1">
+          <span>UI/UX & Prototyping</span><span>80%</span>
+        </div>
+        <div class="h-2 rounded bg-slate-200 dark:bg-slate-700 overflow-hidden">
+          <div class="js-skill h-2 rounded bg-sky-500 dark:bg-sky-400 w-0 transition-[width] duration-700 ease-out" data-pct="80"></div>
+        </div>
       </div>
-    </div>
+    </section>
   </main>
 
+  <!-- 互動腳本（想共用可抽成 app.js） -->
   <script>
-    const file = location.pathname.split('/').pop();
-    document.querySelectorAll('a[data-nav]').forEach(a=>{
-      const href = a.getAttribute('href');
-      if (href.endsWith(file)) a.classList.add('border-b-2','border-slate-900');
+    // ----- 主題切換（記憶選擇） -----
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function setTheme(t){ root.classList.toggle('dark', t==='dark'); localStorage.setItem('theme', t); }
+    setTheme(savedTheme ?? (prefersDark ? 'dark' : 'light'));
+    document.getElementById('themeToggle')?.addEventListener('click', ()=>{
+      setTheme(root.classList.contains('dark') ? 'light' : 'dark');
+    });
+
+    // ----- 行動選單 -----
+    const menuBtn  = document.getElementById('menuBtn');
+    const navMenu  = document.getElementById('navMenu');
+    menuBtn?.addEventListener('click', ()=>{
+      const show = navMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!show));
+    });
+
+    // ----- 滾動陰影 -----
+    const header = document.getElementById('siteHeader');
+    const shadowCheck = () => {
+      if (window.scrollY > 6) header.classList.add('shadow-md');
+      else header.classList.remove('shadow-md');
+    };
+    shadowCheck(); window.addEventListener('scroll', shadowCheck);
+
+    // ----- 導覽高亮 -----
+    (()=>{
+      const file = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('a[data-nav]').forEach(a=>{
+        const href = a.getAttribute('href');
+        const onHome = (file === 'index.html' || file === '');
+        if ((onHome && (href === './' || href.endsWith('index.html'))) || href.endsWith(file)) {
+          a.classList.add('border-b-2','border-slate-900','dark:border-slate-100');
+        }
+      });
+    })();
+
+    // ----- 進場 Reveal + 技能條動畫 -----
+    const reveals = document.querySelectorAll('[data-reveal]');
+    const io = 'IntersectionObserver' in window && new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(!e.isIntersecting) return;
+        e.target.classList.add('opacity-100','translate-y-0');
+        e.target.classList.remove('opacity-0','translate-y-4');
+        // 技能條：當父區塊進場時才把寬度拉到 data-pct
+        e.target.querySelectorAll('.js-skill').forEach(bar=>{
+          const pct = bar.getAttribute('data-pct') || '0';
+          requestAnimationFrame(()=>bar.style.width = pct + '%');
+        });
+        io.unobserve(e.target);
+      });
+    },{threshold:0.15});
+
+    reveals.forEach(el=>{
+      el.classList.add('opacity-0','translate-y-4','transition','duration-700','ease-out','will-change-transform');
+      io && io.observe(el);
     });
   </script>
 </body>

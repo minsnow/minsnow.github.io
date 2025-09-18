@@ -1,68 +1,217 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Projects | Emily Tu</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
   <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
         href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700"/>
+
+  <!-- Tailwind (dark mode by class) -->
+  <script>tailwind.config = { darkMode: 'class' };</script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 </head>
-<body class="bg-white" style='font-family:"Space Grotesk","Noto Sans",sans-serif'>
-  <!-- 共用 Header -->
-  <header class="flex items-center justify-between border-b border-neutral-200 px-10 py-3">
-    <div class="flex items-center gap-3 text-neutral-900">
-      <div class="size-4"><svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M42.44 44S36.07 33.9 41.17 24 42.21 4 42.21 4H7.01s4.65 8.93-1.03 19.99C0.88 33.9 7.27 44 7.27 44z"/></svg></div>
-      <a href="./" class="text-lg font-bold tracking-[-.015em]">Portfolio</a>
+
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100"
+      style='font-family:"Space Grotesk","Noto Sans",sans-serif'>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 flex items-center justify-between border-b border-neutral-200/80 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/70 backdrop-blur px-5 sm:px-10 py-3 transition">
+    <div class="flex items-center gap-3">
+      <div class="size-4 text-slate-900 dark:text-white">
+        <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M42.44 44S36.07 33.9 41.17 24 42.21 4 42.21 4H7.01s4.65 8.93-1.03 19.99C0.88 33.9 7.27 44 7.27 44z"/></svg>
+      </div>
+      <a href="./" class="text-lg font-bold tracking-[-.015em]">Emily Tu</a>
     </div>
-    <nav class="flex items-center gap-8">
+
+    <!-- nav -->
+    <nav id="navMenu" class="hidden sm:flex items-center gap-6">
       <a data-nav href="./" class="text-sm font-medium">Home</a>
       <a data-nav href="./projects.html" class="text-sm font-medium">Projects</a>
       <a data-nav href="./about.html" class="text-sm font-medium">About</a>
       <a href="./index.html#contact" class="text-sm font-medium">Contact</a>
-      <a href="./assets/Emily_Tu_Resume.pdf" class="rounded-lg bg-neutral-200 h-10 px-4 flex items-center text-sm font-bold" target="_blank" rel="noopener">Resume</a>
+      <a href="./assets/Emily_Tu_Resume.pdf" target="_blank" rel="noopener"
+         class="rounded-lg bg-neutral-200 dark:bg-slate-700 dark:text-white h-10 px-4 flex items-center text-sm font-bold">Resume</a>
     </nav>
+
+    <div class="flex items-center gap-2">
+      <!-- theme toggle -->
+      <button id="themeToggle" class="rounded-lg h-10 w-10 grid place-items-center bg-neutral-200 dark:bg-slate-700" title="切換主題">🌓</button>
+      <!-- mobile menu -->
+      <button id="menuBtn" class="sm:hidden rounded-lg h-10 w-10 grid place-items-center bg-neutral-200 dark:bg-slate-700" title="選單">☰</button>
+    </div>
   </header>
 
-  <main class="max-w-[960px] mx-auto px-4">
-    <div class="flex flex-wrap justify-between gap-3 py-6">
+  <main class="max-w-[1024px] mx-auto px-4">
+    <!-- Title -->
+    <section data-reveal class="flex flex-wrap items-end justify-between gap-3 py-6">
       <div class="min-w-72">
         <h1 class="text-[32px] font-bold leading-tight">My Work</h1>
-        <p class="text-slate-500 text-sm">A collection of my projects across CV/Audio/HCI.</p>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">A collection of my projects across CV/Audio/HCI.</p>
       </div>
+    </section>
+
+    <!-- Filters -->
+    <div data-reveal class="flex flex-wrap gap-2 pb-2">
+      <button class="filter-btn rounded-lg bg-neutral-200 dark:bg-slate-700 px-3 py-1 text-sm" data-filter="all">All</button>
+      <button class="filter-btn rounded-lg bg-neutral-200 dark:bg-slate-700 px-3 py-1 text-sm" data-filter="cv">CV</button>
+      <button class="filter-btn rounded-lg bg-neutral-200 dark:bg-slate-700 px-3 py-1 text-sm" data-filter="audio">Audio</button>
+      <button class="filter-btn rounded-lg bg-neutral-200 dark:bg-slate-700 px-3 py-1 text-sm" data-filter="hci">HCI</button>
     </div>
 
-    <!-- 作品卡片網格（替換成你的專案） -->
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-3 pb-12">
-      <!-- 範例：語音開關燈 -->
-      <a href="https://github.com/minsnow" target="_blank" rel="noopener"
-         class="bg-cover bg-center rounded-lg aspect-square p-4 flex items-end"
-         style='background-image:linear-gradient(0deg,rgba(0,0,0,.45),transparent),url("https://lh3.googleusercontent.com/aida-public/AB6AXuD66726v0FVsupSC1F7UOX9q_TeSOOw4uSRv9zt5eXMclB7FNersp0SKGyMZUv-G4Qb0rYiKl54o8Ua3Uwp8Dtc2247EQ0TNLsEG29zgpKUDEl9dEMvyUAdsbJ31uWI2htFa9pjmex0UjPraAkeJjjAmmaxnWwl4AWugY1TrlwDMVZYuZdBsZBJauC5kIPecwRXUOGfC_My5fDkBlh_9pa5Zg3-MXYYrCuGaFbX2J-u1_TVl2sOGHn0WxfDpIrkPwerNloNa78mehw");'>
+    <!-- Grid -->
+    <section data-reveal class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3 pb-16">
+      <!-- 語音開關燈 -->
+      <article class="project-card group relative rounded-lg overflow-hidden aspect-square p-4 flex items-end bg-cover bg-center"
+        data-tags="audio,hci"
+        data-title="Speech Commands → Light"
+        data-desc="用 CNN 於 Speech Commands 實作關鍵詞辨識，串接裝置控制燈光。測試準確率 94%+。"
+        data-link="https://github.com/minsnow"
+        style='background-image:linear-gradient(0deg,rgba(0,0,0,.45),transparent),url("https://lh3.googleusercontent.com/aida-public/AB6AXuD66726v0FVsupSC1F7UOX9q_TeSOOw4uSRv9zt5eXMclB7FNersp0SKGyMZUv-G4Qb0rYiKl54o8Ua3Uwp8Dtc2247EQ0TNLsEG29zgpKUDEl9dEMvyUAdsbJ31uWI2htFa9pjmex0UjPraAkeJjjAmmaxnWwl4AWugY1TrlwDMVZYuZdBsZBJauC5kIPecwRXUOGfC_My5fDkBlh_9pa5Zg3-MXYYrCuGaFbX2J-u1_TVl2sOGHn0WxfDpIrkPwerNloNa78mehw");'>
         <p class="text-white font-bold leading-tight">Speech Commands → Light</p>
-      </a>
+        <button class="js-open-modal absolute right-2 top-2 rounded bg-black/60 text-white text-xs px-2 py-1">Quick view</button>
+      </article>
 
-      <!-- 範例：YOLOv10 + BoT-SORT -->
-      <a href="https://github.com/minsnow" target="_blank" rel="noopener"
-         class="bg-cover bg-center rounded-lg aspect-square p-4 flex items-end"
-         style='background-image:linear-gradient(0deg,rgba(0,0,0,.45),transparent),url("https://lh3.googleusercontent.com/aida-public/AB6AXuC__74T2x3X2imTZ0f7KR9RgccpfG1hg3uBlbAHZODoSgf2xoe9qFEKSoozROkrg663FdGMV-qca8oMf35MhlMlnWmDjRWfreSz_noYleZVuaWp28xWT75pdPC4cMBoRVe-XDx6YrMmeDM2Z58hoelSKsNK1LGwCtPdGuLD9EOCRG2h5WxEoMHCC-gP0Q2PSOaTbhcBeFM_jaOjYzqNh89ldupjnNRmx6l-IONZG_n9I3vOF-dXAcqeBEf-HvsAiOTKj_g3fk2EJq8");'>
+      <!-- YOLOv10 + BoT-SORT -->
+      <article class="project-card group relative rounded-lg overflow-hidden aspect-square p-4 flex items-end bg-cover bg-center"
+        data-tags="cv,hci"
+        data-title="YOLOv10 + BoT-SORT"
+        data-desc="多目標長時間追蹤，穩定輸出進/出事件日誌，用於動物行為分析。"
+        data-link="https://github.com/minsnow"
+        style='background-image:linear-gradient(0deg,rgba(0,0,0,.45),transparent),url("https://lh3.googleusercontent.com/aida-public/AB6AXuC__74T2x3X2imTZ0f7KR9RgccpfG1hg3uBlbAHZODoSgf2xoe9qFEKSoozROkrg663FdGMV-qca8oMf35MhlMlnWmDjRWfreSz_noYleZVuaWp28xWT75pdPC4cMBoRVe-XDx6YrMmeDM2Z58hoelSKsNK1LGwCtPdGuLD9EOCRG2h5WxEoMHCC-gP0Q2PSOaTbhcBeFM_jaOjYzqNh89ldupjnNRmx6l-IONZG_n9I3vOF-dXAcqeBEf-HvsAiOTKj_g3fk2EJq8");'>
         <p class="text-white font-bold leading-tight">YOLOv10 + BoT-SORT</p>
-      </a>
+        <button class="js-open-modal absolute right-2 top-2 rounded bg-black/60 text-white text-xs px-2 py-1">Quick view</button>
+      </article>
 
-      <!-- 範例：LSTM 語音序列筆記 -->
-      <a href="#" class="bg-cover bg-center rounded-lg aspect-square p-4 flex items-end"
-         style='background-image:linear-gradient(0deg,rgba(0,0,0,.45),transparent),url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGzpkHL7NklKnveUrwnnz4sOeR_a7hs0iAUphmEGBtq7De7666y6xYaGR2I5emlRqDV2GH6sbAOiqG84xVg8qM1arPu_sRv0AeUXI_Qhw5Xzag5uIit5A74HN4OBRjAl1wV6_cLv0X-Nug91KJ5B6rCQkR_IVx9EpX2MdJBlWGNylGFKCkOXyEwPEcqE0Id-wzRqFc_I_POXtl4kva8xuIPfOTV5L-ZZPn3ChZSSkICmvs97kVNGBe2hhKnNua6OqN3zvVd_9feyk");'>
+      <!-- LSTM 筆記 -->
+      <article class="project-card group relative rounded-lg overflow-hidden aspect-square p-4 flex items-end bg-cover bg-center"
+        data-tags="audio"
+        data-title="LSTM Audio Notes"
+        data-desc="語音序列前處理、資料增強與訓練流程整理。"
+        data-link="#"
+        style='background-image:linear-gradient(0deg,rgba(0,0,0,.45),transparent),url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGzpkHL7NklKnveUrwnnz4sOeR_a7hs0iAUphmEGBtq7De7666y6xYaGR2I5emlRqDV2GH6sbAOiqG84xVg8qM1arPu_sRv0AeUXI_Qhw5Xzag5uIit5A74HN4OBRjAl1wV6_cLv0X-Nug91KJ5B6rCQkR_IVx9EpX2MdJBlWGNylGFKCkOXyEwPEcqE0Id-wzRqFc_I_POXtl4kva8xuIPfOTV5L-ZZPn3ChZSSkICmvs97kVNGBe2hhKnNua6OqN3zvVd_9feyk");'>
         <p class="text-white font-bold leading-tight">LSTM Audio Notes</p>
-      </a>
-    </div>
+        <button class="js-open-modal absolute right-2 top-2 rounded bg-black/60 text-white text-xs px-2 py-1">Quick view</button>
+      </article>
+    </section>
   </main>
 
+  <!-- Quick View Modal -->
+  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
+    <div class="w-full max-w-lg rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white p-6 relative">
+      <button id="modalClose" class="absolute right-3 top-3 text-2xl leading-none" aria-label="關閉">×</button>
+      <h3 id="modalTitle" class="text-xl font-bold mb-2">Project</h3>
+      <p id="modalDesc" class="mb-4 text-slate-600 dark:text-slate-300"></p>
+      <a id="modalLink" href="#" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 rounded-lg bg-black text-white dark:bg-white dark:text-black px-4 py-2">前往專案</a>
+    </div>
+  </div>
+
+  <!-- Back to top -->
+  <button id="toTop" class="fixed right-4 bottom-4 hidden sm:grid place-items-center rounded-full w-10 h-10 bg-black text-white dark:bg-white dark:text-black">↑</button>
+
+  <!-- Scripts -->
   <script>
-    const file = location.pathname.split('/').pop();
-    document.querySelectorAll('a[data-nav]').forEach(a=>{
-      const href = a.getAttribute('href');
-      if (href.endsWith(file)) a.classList.add('border-b-2','border-neutral-900');
+    // --- 主題切換 ---
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function setTheme(t){ root.classList.toggle('dark', t === 'dark'); localStorage.setItem('theme', t); }
+    setTheme(savedTheme ?? (prefersDark ? 'dark' : 'light'));
+    document.getElementById('themeToggle')?.addEventListener('click', () => {
+      setTheme(root.classList.contains('dark') ? 'light' : 'dark');
     });
+
+    // --- 行動選單 ---
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+    menuBtn?.addEventListener('click', () => navMenu?.classList.toggle('hidden'));
+
+    // --- Header 陰影（已 sticky + backdrop）---
+    const header = document.querySelector('header');
+    const onScroll = () => {
+      if (window.scrollY > 6) header.classList.add('shadow-md'); else header.classList.remove('shadow-md');
+      document.getElementById('toTop').style.display = window.scrollY > 500 ? 'grid' : 'none';
+    };
+    window.addEventListener('scroll', onScroll); onScroll();
+
+    // --- 導覽高亮 ---
+    (() => {
+      const file = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('a[data-nav]').forEach(a=>{
+        const href = a.getAttribute('href');
+        const onHome = (file === 'index.html' || file === '');
+        if ((onHome && (href === './' || href.endsWith('index.html'))) || href.endsWith(file)) {
+          a.classList.add('border-b-2','border-slate-900','dark:border-white');
+        }
+      });
+    })();
+
+    // --- 滾動進場（IntersectionObserver）---
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add('opacity-100','translate-y-0');
+            e.target.classList.remove('opacity-0','translate-y-4');
+            io.unobserve(e.target);
+          }
+        }
+      }, { threshold: 0.15 });
+      revealEls.forEach(el => {
+        el.classList.add('opacity-0','translate-y-4','transition','duration-700','ease-out','will-change-transform');
+        io.observe(el);
+      });
+    }
+
+    // --- 返回頂部 ---
+    document.getElementById('toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // --- 篩選 ---
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+    function applyFilter(tag){
+      cards.forEach(c => {
+        const tags = (c.dataset.tags || '').split(',').map(s => s.trim());
+        const show = tag === 'all' || tags.includes(tag);
+        c.style.display = show ? '' : 'none';
+      });
+      filterBtns.forEach(b => b.classList.remove('ring-2','ring-black','dark:ring-white'));
+      document.querySelector(`.filter-btn[data-filter="${tag}"]`)?.classList.add('ring-2','ring-black','dark:ring-white');
+    }
+    filterBtns.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
+    if (filterBtns.length) applyFilter('all');
+
+    // --- Modal ---
+    const modal = document.getElementById('modal');
+    const modalClose = document.getElementById('modalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalLink = document.getElementById('modalLink');
+
+    function openModal({title, desc, link}) {
+      modalTitle.textContent = title || 'Project';
+      modalDesc.textContent = desc || '';
+      if (link && link !== '#') { modalLink.href = link; modalLink.classList.remove('pointer-events-none','opacity-50'); }
+      else { modalLink.href = '#'; modalLink.classList.add('pointer-events-none','opacity-50'); }
+      modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow = 'hidden';
+    }
+    function closeModal() { modal.classList.add('hidden'); modal.classList.remove('flex'); document.body.style.overflow = ''; }
+
+    document.querySelectorAll('.js-open-modal').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const card = btn.closest('.project-card');
+        openModal({ title: card?.dataset.title, desc: card?.dataset.desc, link: card?.dataset.link });
+      });
+    });
+    modalClose?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
   </script>
 </body>
 </html>
