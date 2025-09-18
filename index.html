@@ -1,111 +1,76 @@
-<html>
-  <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-    <link
-      rel="stylesheet"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
-    />
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Emily Tu</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="bg-neutral-50" style='font-family:"Space Grotesk","Noto Sans",sans-serif'>
+  <!-- Header (共用) -->
+  <header class="flex items-center justify-between border-b border-neutral-200 px-10 py-3">
+    <div class="flex items-center gap-3 text-neutral-900">
+      <div class="size-4">
+        <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M42.44 44S36.07 33.9 41.17 24 42.21 4 42.21 4H7.01s4.65 8.93-1.03 19.99C0.88 33.9 7.27 44 7.27 44z"/></svg>
+      </div>
+      <a href="./" class="text-lg font-bold tracking-[-.015em]">Emily Tu</a>
+    </div>
+    <nav class="flex items-center gap-8">
+      <a data-nav href="./" class="text-sm font-medium">Home</a>
+      <a data-nav href="./projects.html" class="text-sm font-medium">Projects</a>
+      <a data-nav href="./about.html" class="text-sm font-medium">About</a>
+      <a href="#contact" class="text-sm font-medium">Contact</a>
+      <a href="./assets/Emily_Tu_Resume.pdf" class="rounded-lg bg-neutral-200 h-10 px-4 flex items-center text-sm font-bold" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </header>
 
-    <title>Emily Tu</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  </head>
-  <body>
-    <div class="relative flex h-auto min-h-screen w-full flex-col bg-neutral-50 group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
-      <div class="layout-container flex h-full grow flex-col">
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#ededed] px-10 py-3">
-          <div class="flex items-center gap-4 text-[#141414]">
-            <div class="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"
-                  fill="currentColor"
-                ></path>
-              </svg>
-            </div>
-            <h2 class="text-[#141414] text-lg font-bold leading-tight tracking-[-0.015em]">Emily Tu</h2>
-          </div>
-          <div class="flex flex-1 justify-end gap-8">
-            <div class="flex items-center gap-9">
-              <a class="text-[#141414] text-sm font-medium leading-normal" href="#">About</a>
-              <a class="text-[#141414] text-sm font-medium leading-normal" href="#">Projects</a>
-              <a class="text-[#141414] text-sm font-medium leading-normal" href="#">Contact</a>
-            </div>
-            <button
-              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#ededed] text-[#141414] text-sm font-bold leading-normal tracking-[0.015em]"
-            >
-              <span class="truncate">Resume</span>
-            </button>
-          </div>
-        </header>
-        <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div class="@container">
-              <div class="@[480px]:p-4">
-                <div
-                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-center justify-center p-4"
-                  style='background-image: linear-gradient(rgba(0, 86, 245, 0.315) 0%, rgba(89, 161, 255, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCi2NqF9G9IBfBBg7qXizmNfYtut2tisC6iULUoUC5pUoTp_xIOmqS5HO6oyDAw9IRPrcd9LCgbh6hg1_T7J12w-fOB4tJJXbqp5OZ68SMNiOemfw2Td_7m8EEBGpoFIjLHmi_l68w0H2HIbvKIoqa-6Ab0uzfdRU2GGs9m-7r5dfJjZ5I7NQJxQP3SfzHA3NnNA8rEkBqVlLJCpc5O20XbYMf5V1PbM_1Wx8W0Fyri0gAGcPI5fAPov9SMMwGtlyArCDYt4CjpZsM");'
-                >
-                  <div class="flex flex-col gap-2 text-center">
-                    <h1
-                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
-                    >
-                      Hi, I'm Alex, a Designer
-                    </h1>
-                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
-                      I craft digital experiences that are both beautiful and functional. Explore my portfolio to see my latest work and learn more about my design philosophy.
-                    </h2>
-                  </div>
-                  <button
-                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-black text-neutral-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                  >
-                    <span class="truncate">View Portfolio</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- Hero -->
+  <section class="px-6 sm:px-10 py-10">
+    <div class="max-w-[960px] mx-auto">
+      <div class="min-h-[420px] rounded-lg bg-center bg-cover flex flex-col items-center justify-center gap-4 text-center p-6"
+           style='background-image:linear-gradient(rgba(0,86,245,.30),rgba(89,161,255,.35)),url("https://lh3.googleusercontent.com/aida-public/AB6AXuCi2NqF9G9IBfBBg7qXizmNfYtut2tisC6iULUoUC5pUoTp_xIOmqS5HO6oyDAw9IRPrcd9LCgbh6hg1_T7J12w-fOB4tJJXbqp5OZ68SMNiOemfw2Td_7m8EEBGpoFIjLHmi_l68w0H2HIbvKIoqa-6Ab0uzfdRU2GGs9m-7r5dfJjZ5I7NQJxQP3SfzHA3NnNA8rEkBqVlLJCpc5O20XbYMf5V1PbM_1Wx8W0Fyri0gAGcPI5fAPov9SMMwGtlyArCDYt4CjpZsM");'>
+        <h1 class="text-white text-5xl font-black tracking-[-.03em]">Hi, I’m Emily — Data Science × HCI</h1>
+        <p class="text-white/95 max-w-[680px]">I build CV/Audio + interaction demos and tidy write-ups so people can actually use them.</p>
+        <div class="flex gap-3">
+          <a href="./projects.html" class="rounded-lg bg-black text-white h-12 px-5 flex items-center font-bold">View Projects</a>
+          <a href="./about.html" class="rounded-lg border border-black h-12 px-5 flex items-center font-bold">About Me</a>
         </div>
-        <footer class="flex justify-center">
-          <div class="flex max-w-[960px] flex-1 flex-col">
-            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
-              <div class="flex flex-wrap justify-center gap-4">
-                <a href="mailto:tu090124@gmail.com">
-                  <div class="text-neutral-500" data-icon="Envelope" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </a>
-                <a href="https://github.com/minsnow">
-                  <div class="text-neutral-500" data-icon="GithubLogo" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </a>
-                <a href="www.linkedin.com/in/emily-tu-e2003">
-                  <div class="text-neutral-500" data-icon="LinkedinLogo" data-size="24px" data-weight="regular">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                      <path
-                        d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </a>
-              </div>
-              <p class="text-neutral-500 text-base font-normal leading-normal">@2025 minsnow</p>
-            </footer>
-          </div>
-        </footer>
       </div>
     </div>
-  </body>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="py-10 text-center">
+    <div class="flex justify-center gap-4 mb-3 text-neutral-500">
+      <a href="mailto:tu090124@gmail.com" aria-label="email">
+        <!-- mail icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43Z"/></svg>
+      </a>
+      <a href="https://github.com/minsnow" target="_blank" rel="noopener" aria-label="github">
+        <!-- github icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24,8,8,0,0,0,69.07,28a59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68Z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/emily-tu-e2003" target="_blank" rel="noopener" aria-label="linkedin">
+        <!-- linkedin icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm4-28A12,12,0,1,1,88,72,12,12,0,0,1,100,84Zm84,56v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140Z"/></svg>
+      </a>
+    </div>
+    <p class="text-neutral-500">@2025 minsnow</p>
+  </footer>
+
+  <!-- Active nav 標示 -->
+  <script>
+    const file = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('a[data-nav]').forEach(a=>{
+      const href = a.getAttribute('href');
+      const onHome = (file === 'index.html' || file === '');
+      if ((onHome && href === './') || href.endsWith(file)) {
+        a.classList.add('border-b-2','border-neutral-900');
+      }
+    });
+  </script>
+</body>
 </html>

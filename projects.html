@@ -1,154 +1,68 @@
-<html>
-  <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-    <link
-      rel="stylesheet"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
-    />
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects | Emily Tu</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body class="bg-white" style='font-family:"Space Grotesk","Noto Sans",sans-serif'>
+  <!-- 共用 Header -->
+  <header class="flex items-center justify-between border-b border-neutral-200 px-10 py-3">
+    <div class="flex items-center gap-3 text-neutral-900">
+      <div class="size-4"><svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M42.44 44S36.07 33.9 41.17 24 42.21 4 42.21 4H7.01s4.65 8.93-1.03 19.99C0.88 33.9 7.27 44 7.27 44z"/></svg></div>
+      <a href="./" class="text-lg font-bold tracking-[-.015em]">Portfolio</a>
+    </div>
+    <nav class="flex items-center gap-8">
+      <a data-nav href="./" class="text-sm font-medium">Home</a>
+      <a data-nav href="./projects.html" class="text-sm font-medium">Projects</a>
+      <a data-nav href="./about.html" class="text-sm font-medium">About</a>
+      <a href="./index.html#contact" class="text-sm font-medium">Contact</a>
+      <a href="./assets/Emily_Tu_Resume.pdf" class="rounded-lg bg-neutral-200 h-10 px-4 flex items-center text-sm font-bold" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </header>
 
-    <title>Stitch Design</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  </head>
-  <body>
-    <div class="relative flex h-auto min-h-screen w-full flex-col bg-white group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
-      <div class="layout-container flex h-full grow flex-col">
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#f0f3f4] px-10 py-3">
-          <div class="flex items-center gap-4 text-[#111618]">
-            <div class="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_6_319)">
-                  <path
-                    d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
-                    fill="currentColor"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
-                </defs>
-              </svg>
-            </div>
-            <h2 class="text-[#111618] text-lg font-bold leading-tight tracking-[-0.015em]">Portfolio</h2>
-          </div>
-          <div class="flex flex-1 justify-end gap-8">
-            <div class="flex items-center gap-9">
-              <a class="text-[#111618] text-sm font-medium leading-normal" href="#">About</a>
-              <a class="text-[#111618] text-sm font-medium leading-normal" href="#">Projects</a>
-              <a class="text-[#111618] text-sm font-medium leading-normal" href="#">Contact</a>
-            </div>
-            <button
-              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-[#f0f3f4] text-[#111618] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
-            >
-              <div class="text-[#111618]" data-icon="List" data-size="20px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                  <path
-                    d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"
-                  ></path>
-                </svg>
-              </div>
-            </button>
-            <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCsmbCqOyyjctS-IIKOL6FJWQojqgmRnxvtkX58H9vGif-ks5TO7MXHfCTxA3NOpC210KN2x27IQ-cm_MYpD5jfS3z_FAA6AgSB9mx9IUbt1zQgfAjnsgXCVlTiJXHCrt7RG1ptBC06NkWBDpznvTkZA8i8h9-jJYNZcw93MARyM_lj-NHYvykkbuHc7c19jPFRTTcq-KooOi8ol2neYGaE4QFPuaCNI0XtSi2a-DE5L1J0Ir02ggAkEdhWtSVUgx0sb1uGz-uGYmM");'
-            ></div>
-          </div>
-        </header>
-        <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div class="flex flex-wrap justify-between gap-3 p-4">
-              <div class="flex min-w-72 flex-col gap-3">
-                <p class="text-[#111618] tracking-light text-[32px] font-bold leading-tight">My Work</p>
-                <p class="text-[#617c89] text-sm font-normal leading-normal">A collection of my creative projects, showcasing my skills and passion for design.</p>
-              </div>
-            </div>
-            <div class="flex gap-3 p-3 flex-wrap pr-4">
-              <button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f3f4] pl-4 pr-2">
-                <p class="text-[#111618] text-sm font-medium leading-normal">All Projects</p>
-                <div class="text-[#111618]" data-icon="CaretDown" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-              </button>
-              <button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f3f4] pl-4 pr-2">
-                <p class="text-[#111618] text-sm font-medium leading-normal">Web Design</p>
-                <div class="text-[#111618]" data-icon="CaretDown" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-              </button>
-              <button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-[#f0f3f4] pl-4 pr-2">
-                <p class="text-[#111618] text-sm font-medium leading-normal">Graphic Design</p>
-                <div class="text-[#111618]" data-icon="CaretDown" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-              </button>
-            </div>
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-              <div
-                class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square"
-                style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD66726v0FVsupSC1F7UOX9q_TeSOOw4uSRv9zt5eXMclB7FNersp0SKGyMZUv-G4Qb0rYiKl54o8Ua3Uwp8Dtc2247EQ0TNLsEG29zgpKUDEl9dEMvyUAdsbJ31uWI2htFa9pjmex0UjPraAkeJjjAmmaxnWwl4AWugY1TrlwDMVZYuZdBsZBJauC5kIPecwRXUOGfC_My5fDkBlh_9pa5Zg3-MXYYrCuGaFbX2J-u1_TVl2sOGHn0WxfDpIrkPwerNloNa78mehw");'
-              >
-                <p class="text-white text-base font-bold leading-tight w-4/5 line-clamp-2">Project Alpha</p>
-              </div>
-              <div
-                class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square"
-                style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuC__74T2x3X2imTZ0f7KR9RgccpfG1hg3uBlbAHZODoSgf2xoe9qFEKSoozROkrg663FdGMV-qca8oMf35MhlMlnWmDjRWfreSz_noYleZVuaWp28xWT75pdPC4cMBoRVe-XDx6YrMmeDM2Z58hoelSKsNK1LGwCtPdGuLD9EOCRG2h5WxEoMHCC-gP0Q2PSOaTbhcBeFM_jaOjYzqNh89ldupjnNRmx6l-IONZG_n9I3vOF-dXAcqeBEf-HvsAiOTKj_g3fk2EJq8");'
-              >
-                <p class="text-white text-base font-bold leading-tight w-4/5 line-clamp-2">Project Beta</p>
-              </div>
-              <div
-                class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square"
-                style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGzpkHL7NklKnveUrwnnz4sOeR_a7hs0iAUphmEGBtq7De7666y6xYaGR2I5emlRqDV2GH6sbAOiqG84xVg8qM1arPu_sRv0AeUXI_Qhw5Xzag5uIit5A74HN4OBRjAl1wV6_cLv0X-Nug91KJ5B6rCQkR_IVx9EpX2MdJBlWGNylGFKCkOXyEwPEcqE0Id-wzRqFc_I_POXtl4kva8xuIPfOTV5L-ZZPn3ChZSSkICmvs97kVNGBe2hhKnNua6OqN3zvVd_9feyk");'
-              >
-                <p class="text-white text-base font-bold leading-tight w-4/5 line-clamp-2">Project Gamma</p>
-              </div>
-              <div
-                class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square"
-                style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDiNmXlLdBczkJtsVIc1Hqq8ven53FXFG8GFZGBVqEoLt7T59rhZRUIZc8inRmk90c6hjvR4VbwWtnzhLV-jjEq6GaZJgiyPgEJl6UXLzq0Vx5cUo6cCiHuOCHOkMw6YvMvB-IvOAkFWCt31CMRODWlMF2Mch7xszN6tncwb-um8icx-39Gppa_30ZZ3qYOBoll5iaTenxxIGJaUtjoxEK_ICve8f1ga1NZaIDHJaqM7QIPub7qJ8_fPAk1Ex7Bxg9U4xjF5sKamGY");'
-              >
-                <p class="text-white text-base font-bold leading-tight w-4/5 line-clamp-2">Project Delta</p>
-              </div>
-              <div
-                class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square"
-                style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAACCxCm3oPx6CYpNqEHBGvmp47iox6IGPTwldYJRoI_u0v6tOJbZuUkaYGKDzYj6mYvfPevq9Dpk8nDpZusDler2EeSbXGaCQgX5tpUn9A2z8NA30azC_VnkC9evhIEuph5KjOJxSg2jhCDi-Gm8AlVnhfxQLRL_zmEascrqhf0ZHV7QYcdujq0Tc3Voy4z6Ut30NlZGQgxdj878jIU3EjUPOdPcWCvqb0n4WVdCv_b25aDhNPIavUgzbGzGRo90pjIdT1BXw6psM");'
-              >
-                <p class="text-white text-base font-bold leading-tight w-4/5 line-clamp-2">Project Epsilon</p>
-              </div>
-              <div
-                class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square"
-                style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtw1hDVL1QW5zQBmTZDCnFHBAMlSAd2QTEQqZGvzYfOMyuIBk9w8A2QE8Lsn_LQmHZPqZETaAyccDTJG2x52VS9t-a0HLhzTvTCfdNWqyvIv_2Qv1CMTRM9L6YtTMylZjzH6XR3N5qZ-voGiWaBBVuxd1D_JVg5NvbM5K84SZRsLYUzNmzTNOYYrsQe8NQ5dxqE0pQurKJVAGsuoWj3OycRtp1hbEmRt69Z8hBwXddi9CEH1XnfvyMu_FjpZ8TGuwa2Gf-enEcB_w");'
-              >
-                <p class="text-white text-base font-bold leading-tight w-4/5 line-clamp-2">Project Zeta</p>
-              </div>
-              <div
-                class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square"
-                style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA27Dz79T31SJn81xZ9PgzwyK7cCGS-b4t4s7FMzesLB0TGqGssZNpl5FqHCyEinBNLjzVy8ylNriBrj9nT7GjyHKhl3lxNh2wMC4hzB4YyFuvKCyTkhlHnR-4hiXsQzEmHea5nKPXWVKts_bZbVUu0k7oTzKHoEI7_pMb8nvyfj5B6AaBYQ6q9RqHo7XfHQIoaTfiA-lHvVn37WpEWcjn2jWXqyxk4yFvCOVNT7YElNAsj0CCoJkwV1tk06EDYXU48HSNv8e22vUo");'
-              >
-                <p class="text-white text-base font-bold leading-tight w-4/5 line-clamp-2">Project Eta</p>
-              </div>
-              <div
-                class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square"
-                style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDFObrg667W8DHLIDoBgvfFSFIOZm3LIlDJcFuIW74HFvdifUHRr6QY1aXrsc-9zihp-V0sSGtNi0jurKjl7CiqP8NdsXMHB4pM1j71yOhT8-KaruFNTGU7G6hONkWMZgqqL8nuydw4iyaiaTWRIeiU_NzcOtDbFvtQJk93Rtvgl-6wbQU1MvdfQyuoAHe0YbPby1pP9xFgZzT_OC4NWjStHFXCl4bsoGlMxaLDwXk2_PFw7oHN0SDxValiJc845emGMqnPQZdW8Ik");'
-              >
-                <p class="text-white text-base font-bold leading-tight w-4/5 line-clamp-2">Project Theta</p>
-              </div>
-              <div
-                class="bg-cover bg-center flex flex-col gap-3 rounded-lg justify-end p-4 aspect-square"
-                style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCw0f8h-s0adBskvei5ZP4myUSaPQvP7PtDG7PUtTPHY40c-LpGUY_rA6tnwKKwgXI78lxkHjvf2Q0mOwuZ_KYdPtqoGZ8eNvVNuQ4eA1p_nyUA6kjj4Afo0TgcffsENfuPYnTrSTiXZVjQy3i3WhNg4sU4351HFKhJHUqCUjy_QwGfxGXSoIvHyPkCODBohQ1IWQqpRbUacJM0EWZCA-kWqwUql65ipN9-VG3IRUNHqTpwPQkLkA97NHVNe3kW-fP8lNpNZmhh650");'
-              >
-                <p class="text-white text-base font-bold leading-tight w-4/5 line-clamp-2">Project Iota</p>
-              </div>
-            </div>
-          </div>
-        </div>
+  <main class="max-w-[960px] mx-auto px-4">
+    <div class="flex flex-wrap justify-between gap-3 py-6">
+      <div class="min-w-72">
+        <h1 class="text-[32px] font-bold leading-tight">My Work</h1>
+        <p class="text-slate-500 text-sm">A collection of my projects across CV/Audio/HCI.</p>
       </div>
     </div>
-  </body>
+
+    <!-- 作品卡片網格（替換成你的專案） -->
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-3 pb-12">
+      <!-- 範例：語音開關燈 -->
+      <a href="https://github.com/minsnow" target="_blank" rel="noopener"
+         class="bg-cover bg-center rounded-lg aspect-square p-4 flex items-end"
+         style='background-image:linear-gradient(0deg,rgba(0,0,0,.45),transparent),url("https://lh3.googleusercontent.com/aida-public/AB6AXuD66726v0FVsupSC1F7UOX9q_TeSOOw4uSRv9zt5eXMclB7FNersp0SKGyMZUv-G4Qb0rYiKl54o8Ua3Uwp8Dtc2247EQ0TNLsEG29zgpKUDEl9dEMvyUAdsbJ31uWI2htFa9pjmex0UjPraAkeJjjAmmaxnWwl4AWugY1TrlwDMVZYuZdBsZBJauC5kIPecwRXUOGfC_My5fDkBlh_9pa5Zg3-MXYYrCuGaFbX2J-u1_TVl2sOGHn0WxfDpIrkPwerNloNa78mehw");'>
+        <p class="text-white font-bold leading-tight">Speech Commands → Light</p>
+      </a>
+
+      <!-- 範例：YOLOv10 + BoT-SORT -->
+      <a href="https://github.com/minsnow" target="_blank" rel="noopener"
+         class="bg-cover bg-center rounded-lg aspect-square p-4 flex items-end"
+         style='background-image:linear-gradient(0deg,rgba(0,0,0,.45),transparent),url("https://lh3.googleusercontent.com/aida-public/AB6AXuC__74T2x3X2imTZ0f7KR9RgccpfG1hg3uBlbAHZODoSgf2xoe9qFEKSoozROkrg663FdGMV-qca8oMf35MhlMlnWmDjRWfreSz_noYleZVuaWp28xWT75pdPC4cMBoRVe-XDx6YrMmeDM2Z58hoelSKsNK1LGwCtPdGuLD9EOCRG2h5WxEoMHCC-gP0Q2PSOaTbhcBeFM_jaOjYzqNh89ldupjnNRmx6l-IONZG_n9I3vOF-dXAcqeBEf-HvsAiOTKj_g3fk2EJq8");'>
+        <p class="text-white font-bold leading-tight">YOLOv10 + BoT-SORT</p>
+      </a>
+
+      <!-- 範例：LSTM 語音序列筆記 -->
+      <a href="#" class="bg-cover bg-center rounded-lg aspect-square p-4 flex items-end"
+         style='background-image:linear-gradient(0deg,rgba(0,0,0,.45),transparent),url("https://lh3.googleusercontent.com/aida-public/AB6AXuBGzpkHL7NklKnveUrwnnz4sOeR_a7hs0iAUphmEGBtq7De7666y6xYaGR2I5emlRqDV2GH6sbAOiqG84xVg8qM1arPu_sRv0AeUXI_Qhw5Xzag5uIit5A74HN4OBRjAl1wV6_cLv0X-Nug91KJ5B6rCQkR_IVx9EpX2MdJBlWGNylGFKCkOXyEwPEcqE0Id-wzRqFc_I_POXtl4kva8xuIPfOTV5L-ZZPn3ChZSSkICmvs97kVNGBe2hhKnNua6OqN3zvVd_9feyk");'>
+        <p class="text-white font-bold leading-tight">LSTM Audio Notes</p>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    const file = location.pathname.split('/').pop();
+    document.querySelectorAll('a[data-nav]').forEach(a=>{
+      const href = a.getAttribute('href');
+      if (href.endsWith(file)) a.classList.add('border-b-2','border-neutral-900');
+    });
+  </script>
+</body>
 </html>
