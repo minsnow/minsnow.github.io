@@ -1,71 +1,111 @@
-<!doctype html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>小糯米 | 個人網站</title>
-  <meta name="description" content="資料科學 / HCI 作品集與履歷">
-  <meta property="og:title" content="小糯米 | 個人網站">
-  <meta property="og:description" content="資料科學 / HCI 作品集與履歷">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <nav class="nav">
-      <a class="logo" href="./">小糯米</a>
-      <input id="menu-toggle" type="checkbox" />
-      <label class="menu-button" for="menu-toggle">☰</label>
-      <ul class="menu">
-        <li><a href="./projects.html">作品集</a></li>
-        <li><a href="./about.html">關於我</a></li>
-        <li><a href="#contact">聯絡</a></li>
-      </ul>
-    </nav>
-    <section class="hero">
-      <h1>資料科學 × HCI</h1>
-      <p>專注電腦視覺、語音與互動設計。這裡放我的專案、技術筆記與履歷連結。</p>
-      <p class="cta">
-        <a class="btn" href="projects.html">看作品</a>
-        <a class="btn outline" href="about.html">認識我</a>
-      </p>
-    </section>
-  </header>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
+    />
 
-  <main class="container">
-    <section>
-      <h2>代表作品</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>語音辨識開關燈</h3>
-          <p>用 CNN 在 Speech Commands 上達成 94%+ 準確率，並串接裝置控制燈光。</p>
-          <p><a href="#" target="_blank" rel="noopener">專案連結</a></p>
-        </article>
-        <article class="card">
-          <h3>YOLOv10 + BoT‑SORT 多目標追蹤</h3>
-          <p>動物行為追蹤與進出事件偵測，輸出時間序列日誌。</p>
-          <p><a href="#" target="_blank" rel="noopener">閱讀說明 / Demo</a></p>
-        </article>
-        <article class="card">
-          <h3>LSTM 處理語音序列</h3>
-          <p>從特徵工程、資料增強到訓練流程整理的技術筆記。</p>
-          <p><a href="#" target="_blank" rel="noopener">文章</a></p>
-        </article>
+    <title>Emily Tu</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex h-auto min-h-screen w-full flex-col bg-neutral-50 group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#ededed] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#141414]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-[#141414] text-lg font-bold leading-tight tracking-[-0.015em]">Emily Tu</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#141414] text-sm font-medium leading-normal" href="#">About</a>
+              <a class="text-[#141414] text-sm font-medium leading-normal" href="#">Projects</a>
+              <a class="text-[#141414] text-sm font-medium leading-normal" href="#">Contact</a>
+            </div>
+            <button
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#ededed] text-[#141414] text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">Resume</span>
+            </button>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="@container">
+              <div class="@[480px]:p-4">
+                <div
+                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-center justify-center p-4"
+                  style='background-image: linear-gradient(rgba(0, 86, 245, 0.315) 0%, rgba(89, 161, 255, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCi2NqF9G9IBfBBg7qXizmNfYtut2tisC6iULUoUC5pUoTp_xIOmqS5HO6oyDAw9IRPrcd9LCgbh6hg1_T7J12w-fOB4tJJXbqp5OZ68SMNiOemfw2Td_7m8EEBGpoFIjLHmi_l68w0H2HIbvKIoqa-6Ab0uzfdRU2GGs9m-7r5dfJjZ5I7NQJxQP3SfzHA3NnNA8rEkBqVlLJCpc5O20XbYMf5V1PbM_1Wx8W0Fyri0gAGcPI5fAPov9SMMwGtlyArCDYt4CjpZsM");'
+                >
+                  <div class="flex flex-col gap-2 text-center">
+                    <h1
+                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                    >
+                      Hi, I'm Alex, a Designer
+                    </h1>
+                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                      I craft digital experiences that are both beautiful and functional. Explore my portfolio to see my latest work and learn more about my design philosophy.
+                    </h2>
+                  </div>
+                  <button
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-black text-neutral-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                  >
+                    <span class="truncate">View Portfolio</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="flex justify-center">
+          <div class="flex max-w-[960px] flex-1 flex-col">
+            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
+              <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:tu090124@gmail.com">
+                  <div class="text-neutral-500" data-icon="Envelope" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </a>
+                <a href="https://github.com/minsnow">
+                  <div class="text-neutral-500" data-icon="GithubLogo" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </a>
+                <a href="www.linkedin.com/in/emily-tu-e2003">
+                  <div class="text-neutral-500" data-icon="LinkedinLogo" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+              <p class="text-neutral-500 text-base font-normal leading-normal">@2025 minsnow</p>
+            </footer>
+          </div>
+        </footer>
       </div>
-    </section>
-
-    <section id="contact">
-      <h2>聯絡</h2>
-      <p>歡迎來信交流：<a href="mailto:tu090124@gmail.com">tu090124@gmail.com</a> ｜
-         <a href="https://github.com/minsnow" target="_blank" rel="noopener">GitHub</a> ｜
-         <a href="www.linkedin.com/in/emily-tu-e2003" target="_blank" rel="noopener">LinkedIn</a></p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <small>© 2025 小糯米</small>
-  </footer>
-</body>
+    </div>
+  </body>
 </html>
