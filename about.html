@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
         href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700"/>
-  
+
   <!-- Tailwind（啟用 dark mode by class） -->
   <script>tailwind={config:{darkMode:'class'}};</script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -20,17 +20,17 @@
       style='font-family:"Space Grotesk","Noto Sans",sans-serif'>
 
   <!-- Header -->
-  <header class="sticky top-0 z-40 flex items-center justify-between border-b border-neutral-200/70 dark:border-neutral-700/60
+  <header id="siteHeader" class="sticky top-0 z-40 flex items-center justify-between border-b border-neutral-200/70 dark:border-neutral-700/60
                  bg-white/70 dark:bg-neutral-900/70 backdrop-blur px-4 sm:px-10 py-3 transition-shadow">
     <div class="flex items-center gap-3">
-      <!-- logo 圖片（24×24；跟原先 size-4 差不多） -->
+      <!-- logo 圖片（24×24） -->
       <img
         src="./assets/m2.png"
         alt="Emily Tu"
         class="h-6 w-6 rounded-full object-cover"
         width="24" height="24"
       />
-      <a href="./" class="text-lg font-bold tracking-[-.015em]">Emily Tu</a>
+      <a href="./index.html" class="text-lg font-bold tracking-[-.015em]">Emily Tu</a>
     </div>
 
     <!-- 導覽 -->
@@ -59,6 +59,7 @@
         alt="Emily Tu portrait"
         width="128" height="128"
         class="rounded-full w-32 h-32 object-cover ring-2 ring-slate-200 dark:ring-slate-700"
+        loading="lazy" decoding="async"
       />
       <div>
         <h1 class="text-2xl font-bold tracking-[-.015em]">Emily Tu</h1>
@@ -68,7 +69,7 @@
 
     <section data-reveal class="px-4 pt-2 pb-1">
       <p class="text-slate-700 dark:text-slate-300">
-        畢業於東吳大學資料科學系。 
+        畢業於東吳大學資料科學系。
       </p>
     </section>
 
@@ -163,7 +164,58 @@
       </ul>
     </section>
 
-     <!-- Footer -->
+    <!-- Languages -->
+    <section data-reveal class="px-4 pt-10">
+      <h2 class="text-2xl font-bold mb-4">Languages</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <li class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
+          <span class="shrink-0 text-teal-600 dark:text-teal-400">
+            <!-- chat bubbles -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+              <path d="M80,144H48l-8,32-32,8,8-32V64A16,16,0,0,1,32,48H176a16,16,0,0,1,16,16v64a16,16,0,0,1-16,16H108l-36,36Z"/>
+            </svg>
+          </span>
+          <div>
+            <p class="font-semibold">English</p>
+            <p class="text-sm text-slate-600 dark:text-slate-300">Intermediate · TOEIC 670</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Certifications -->
+    <section data-reveal class="px-4 pt-10 pb-4">
+      <h2 class="text-2xl font-bold mb-4">Certifications</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <li class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
+          <span class="shrink-0 text-rose-600 dark:text-rose-400">
+            <!-- certificate -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+              <path d="M208,40H48A16,16,0,0,0,32,56V200a8,8,0,0,0,11.58,7.16L64,197.05l20.42,10.11a8,8,0,0,0,7.16,0L112,197.05l20.42,10.11a8,8,0,0,0,7.16,0L160,197.05l20.42,10.11A8,8,0,0,0,192,200V56A16,16,0,0,0,208,40Z"/>
+            </svg>
+          </span>
+          <span>SSE Artificial Intelligence Essentials</span>
+        </li>
+        <li class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
+          <span class="shrink-0 text-blue-600 dark:text-blue-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+              <path d="M224,56V200a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V56A16,16,0,0,1,48,40H208A16,16,0,0,1,224,56Z"/>
+            </svg>
+          </span>
+          <span>Google Analytics</span>
+        </li>
+        <li class="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 sm:col-span-2">
+          <span class="shrink-0 text-yellow-600 dark:text-yellow-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+              <path d="M216,56H40A16,16,0,0,0,24,72v64a16,16,0,0,0,16,16H120v24l32-24h64a16,16,0,0,0,16-16V72A16,16,0,0,0,216,56Z"/>
+            </svg>
+          </span>
+          <span>NVIDIA 深度學習基礎理論與實踐</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
     <footer id="contact" class="py-10 text-center">
       <p class="text-neutral-500">@2025 minsnow</p>
     </footer>
@@ -203,28 +255,22 @@
       document.querySelectorAll('a[data-nav]').forEach(a=>{
         const href = a.getAttribute('href');
         const onHome = (file === 'index.html' || file === '');
-        if ((onHome && (href === './' || href.endsWith('index.html'))) || href.endsWith(file)) {
+        if ((onHome && (href.endsWith('index.html'))) || href.endsWith(file)) {
           a.classList.add('border-b-2','border-slate-900','dark:border-slate-100');
         }
       });
     })();
 
-    // ----- 進場 Reveal + 技能條動畫 -----
+    // ----- 進場 Reveal -----
     const reveals = document.querySelectorAll('[data-reveal]');
     const io = 'IntersectionObserver' in window && new IntersectionObserver(entries=>{
       entries.forEach(e=>{
         if(!e.isIntersecting) return;
         e.target.classList.add('opacity-100','translate-y-0');
         e.target.classList.remove('opacity-0','translate-y-4');
-        // 技能條：當父區塊進場時才把寬度拉到 data-pct
-        e.target.querySelectorAll('.js-skill').forEach(bar=>{
-          const pct = bar.getAttribute('data-pct') || '0';
-          requestAnimationFrame(()=>bar.style.width = pct + '%');
-        });
         io.unobserve(e.target);
       });
     },{threshold:0.15});
-
     reveals.forEach(el=>{
       el.classList.add('opacity-0','translate-y-4','transition','duration-700','ease-out','will-change-transform');
       io && io.observe(el);
