@@ -34,20 +34,18 @@
     </div>
     <!-- 導覽列（手機預設收起） -->
     <nav id="navMenu" class="hidden sm:flex items-center gap-6">
-      <a data-nav href="./index.html" class="text-sm font-medium">Home</a>
-      <a data-nav href="./projects.html" class="text-sm font-medium">Projects</a>
-      <a data-nav href="./about.html" class="text-sm font-medium">About</a>
+      <a data-nav href="./index.html" class="text-sm font-medium hover:opacity-80">Home</a>
+      <a data-nav href="./projects.html" class="text-sm font-medium hover:opacity-80">Projects</a>
+      <a data-nav href="./about.html" class="text-sm font-medium hover:opacity-80">About</a>
     </nav>
     <!-- 行動選單鍵 + 主題切換 -->
     <div class="flex items-center gap-2 sm:gap-3">
       <button id="themeToggle"
-              class="rounded-lg h-10 w-10 grid place-items-center bg-neutral-200 dark:bg-neutral-800"
-              title="深色/淺色">
-        🌓
-      </button>
+              class="rounded-lg h-10 w-10 grid place-items-center bg-slate-200 dark:bg-neutral-800"
+              title="切換深/淺色">🌓</button>
       <button id="menuBtn"
               class="sm:hidden rounded-lg h-10 w-10 grid place-items-center bg-neutral-200 dark:bg-neutral-800"
-              title="選單">☰</button>
+              aria-controls="navMenu" aria-expanded="false" title="開關選單">☰</button>
     </div>
   </header>
   <!-- Hero -->
@@ -92,14 +90,22 @@
 
   <!-- 互動腳本：深色/淺色、陰影、錨點、回頂、reveal、選單、高亮 -->
   <script>
-    // 主題切換（記憶在 localStorage）
+    // ----- 主題切換（記憶選擇） -----
     const root = document.documentElement;
-    const saved = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    function setTheme(t){ root.classList.toggle('dark', t === 'dark'); localStorage.setItem('theme', t); }
-    setTheme(saved ?? (prefersDark ? 'dark' : 'light'));
-    document.getElementById('themeToggle')?.addEventListener('click', () => {
+    function setTheme(t){ root.classList.toggle('dark', t==='dark'); localStorage.setItem('theme', t); }
+    setTheme(savedTheme ?? (prefersDark ? 'dark' : 'light'));
+    document.getElementById('themeToggle')?.addEventListener('click', ()=>{
       setTheme(root.classList.contains('dark') ? 'light' : 'dark');
+    });
+
+    // ----- 行動選單 -----
+    const menuBtn  = document.getElementById('menuBtn');
+    const navMenu  = document.getElementById('navMenu');
+    menuBtn?.addEventListener('click', ()=>{
+      const show = navMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', String(!show));
     });
 
     // Header 陰影
@@ -110,11 +116,6 @@
       else header.classList.remove('shadow-md');
     };
     window.addEventListener('scroll', shadow); shadow();
-
-    // 行動選單
-    const menuBtn = document.getElementById('menuBtn');
-    const navMenu = document.getElementById('navMenu');
-    menuBtn?.addEventListener('click', () => navMenu?.classList.toggle('hidden'));
 
     // 目前頁高亮
     (() => {
