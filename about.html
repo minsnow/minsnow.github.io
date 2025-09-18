@@ -71,40 +71,97 @@
       </p>
     </section>
 
-    <!-- 技能 -->
-    <section data-reveal class="px-4 pt-8 pb-2">
-      <h2 class="text-2xl font-bold">Skills</h2>
+    <!-- Skills -->
+    <section data-reveal class="px-4 pt-8">
+      <h2 class="text-2xl font-bold mb-4">Skills</h2>
+
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <!-- Deep Learning -->
+        <li class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100/60 dark:hover:bg-slate-800/60 transition">
+          <span class="shrink-0 mt-0.5 text-sky-600 dark:text-sky-400">
+            <!-- brain -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+              <path d="M92,32a36,36,0,0,0-36,36v4A36,36,0,0,0,20,108v8a36,36,0,0,0,24,34.12V156a36,36,0,0,0,36,36h12V32Zm108,40V68A36,36,0,0,0,164,32V192h12a36,36,0,0,0,36-36v-6.12A36,36,0,0,0,236,116v-8a36,36,0,0,0-36-36Z"/>
+            </svg>
+          </span>
+          <div>
+            <h3 class="font-semibold">Deep Learning</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">CNN、LSTM</p>
+          </div>
+        </li>
+
+        <!-- Computer Vision -->
+        <li class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100/60 dark:hover:bg-slate-800/60 transition">
+          <span class="shrink-0 mt-0.5 text-indigo-600 dark:text-indigo-400">
+            <!-- camera -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+              <path d="M224,64H184l-9.6-19.2A16,16,0,0,0,160,36H96a16,16,0,0,0-14.4,8.8L72,64H32A24,24,0,0,0,8,88V200a24,24,0,0,0,24,24H224a24,24,0,0,0,24-24V88A24,24,0,0,0,224,64Zm-96,128a48,48,0,1,1,48-48A48,48,0,0,1,128,192Z"/>
+            </svg>
+          </span>
+          <div>
+            <h3 class="font-semibold">Computer Vision</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">OpenCV、MediaPipe</p>
+          </div>
+        </li>
+
+        <!-- Programming -->
+        <li class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100/60 dark:hover:bg-slate-800/60 transition">
+          <span class="shrink-0 mt-0.5 text-emerald-600 dark:text-emerald-400">
+            <!-- code -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+              <path d="M88,96,48,128l40,32a8,8,0,0,1-10,12L32,132a8,8,0,0,1,0-12l46-40a8,8,0,0,1,10,12Zm146,24L188,80a8,8,0,1,0-10,12l40,32-40,32a8,8,0,1,0,10,12l46-40A8,8,0,0,0,234,120ZM150,48a8,8,0,0,0-9.8,5.6l-48,160a8,8,0,0,0,15.4,4.8l48-160A8,8,0,0,0,150,48Z"/>
+            </svg>
+          </span>
+          <div>
+            <h3 class="font-semibold">Programming</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">Python、R</p>
+          </div>
+        </li>
+
+        <!-- Data & DB -->
+        <li class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100/60 dark:hover:bg-slate-800/60 transition">
+          <span class="shrink-0 mt-0.5 text-amber-600 dark:text-amber-400">
+            <!-- database -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+              <path d="M128,24C69.1,24,24,41.9,24,64V192c0,22.1,45.1,40,104,40s104-17.9,104-40V64C232,41.9,186.9,24,128,24Zm0,16c50,0,88,15.1,88,24s-38,24-88,24S40,73.1,40,64,78,40,128,40Zm88,80c0,8.9-38,24-88,24s-88-15.1-88-24V97.2C62,107,94.2,112,128,112s66-5,88-14.8Zm0,48c0,8.9-38,24-88,24s-88-15.1-88-24V145.2C62,155,94.2,160,128,160s66-5,88-14.8Z"/>
+            </svg>
+          </span>
+          <div>
+            <h3 class="font-semibold">Data &amp; DB</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">SQL、MySQL</p>
+          </div>
+        </li>
+
+        <!-- HCI Systems -->
+        <li class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100/60 dark:hover:bg-slate-800/60 transition">
+          <span class="shrink-0 mt-0.5 text-fuchsia-600 dark:text-fuchsia-400">
+            <!-- cube -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+              <path d="M224,88.4,136,40.2a16,16,0,0,0-16,0L32,88.4A16,16,0,0,0,24,102v52a16,16,0,0,0,8,13.9l88,48.2a16,16,0,0,0,16,0l88-48.2a16,16,0,0,0,8-13.9V102A16,16,0,0,0,224,88.4ZM128,56.2,200.6,96,128,135.8,55.4,96Zm-80,59L120,152v41.8L48,157.2Zm96,78.6V152l72-36.8v41.2Z"/>
+            </svg>
+          </span>
+          <div>
+            <h3 class="font-semibold">HCI Systems</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">Unity</p>
+          </div>
+        </li>
+
+        <!-- Web -->
+        <li class="flex items-start gap-3 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100/60 dark:hover:bg-slate-800/60 transition">
+          <span class="shrink-0 mt-0.5 text-cyan-600 dark:text-cyan-400">
+            <!-- globe -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 256" fill="currentColor">
+              <path d="M128,24A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm63.9,64H168a167.3,167.3,0,0,0-16.1-39.3A88.21,88.21,0,0,1,191.9,88ZM104.1,48.7A167.3,167.3,0,0,0,88,88H64.1A88.21,88.21,0,0,1,104.1,48.7ZM64.1,168H88a167.3,167.3,0,0,0,16.1,39.3A88.21,88.21,0,0,1,64.1,168Zm87.8,39.3A167.3,167.3,0,0,0,168,168h23.9A88.21,88.21,0,0,1,151.9,207.3ZM168,152H88a184.86,184.86,0,0,1,0-48h80A184.86,184.86,0,0,1,168,152Z"/>
+            </svg>
+          </span>
+          <div>
+            <h3 class="font-semibold">Web</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">HTML/CSS、PHP</p>
+          </div>
+        </li>
+      </ul>
     </section>
 
-    <section data-reveal class="space-y-5 px-4 pb-12">
-      <!-- 進度條會在進場時動畫至 data-pct% -->
-      <div>
-        <div class="flex justify-between mb-1">
-          <span>Python / PyTorch</span><span>90%</span>
-        </div>
-        <div class="h-2 rounded bg-slate-200 dark:bg-slate-700 overflow-hidden">
-          <div class="js-skill h-2 rounded bg-sky-500 dark:bg-sky-400 w-0 transition-[width] duration-700 ease-out" data-pct="90"></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="flex justify-between mb-1">
-          <span>OpenCV / MediaPipe</span><span>85%</span>
-        </div>
-        <div class="h-2 rounded bg-slate-200 dark:bg-slate-700 overflow-hidden">
-          <div class="js-skill h-2 rounded bg-sky-500 dark:bg-sky-400 w-0 transition-[width] duration-700 ease-out" data-pct="85"></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="flex justify-between mb-1">
-          <span>UI/UX & Prototyping</span><span>80%</span>
-        </div>
-        <div class="h-2 rounded bg-slate-200 dark:bg-slate-700 overflow-hidden">
-          <div class="js-skill h-2 rounded bg-sky-500 dark:bg-sky-400 w-0 transition-[width] duration-700 ease-out" data-pct="80"></div>
-        </div>
-      </div>
-    </section>
      <!-- Footer -->
     <footer id="contact" class="py-10 text-center">
       <p class="text-neutral-500">@2025 minsnow</p>
