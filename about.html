@@ -1,54 +1,101 @@
-<!doctype html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>關於我 | 小糯米</title>
-  <meta name="description" content="自我介紹與技能">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="sub-header">
-    <nav class="nav">
-      <a class="logo" href="./">小糯米</a>
-      <ul class="menu inline">
-        <li><a href="./projects.html">作品集</a></li>
-        <li><a href="./about.html" class="active">關於我</a></li>
-      </ul>
-    </nav>
-    <h1>關於我</h1>
-    <p class="sub">資料科學 / HCI｜電腦視覺、語音與互動設計</p>
-  </header>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
+    />
 
-  <main class="container narrow">
-    <section>
-      <h2>簡介</h2>
-      <p>你好，我是小糯米，關注「讓 AI 真正理解人的行為與情緒」。我喜歡把資料分析與互動設計結合，做出能被看見、被使用的作品。</p>
-    </section>
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
-    <section>
-      <h2>技能</h2>
-      <div class="tagset">
-        <span class="tag">Python</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag">OpenCV</span>
-        <span class="tag">Mediapipe</span>
-        <span class="tag">CNN / LSTM</span>
-        <span class="tag">HTML / CSS / JS</span>
-        <span class="tag">Unity</span>
-        <span class="tag">Git / GitHub</span>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex h-auto min-h-screen w-full flex-col bg-slate-50 group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7eff3] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#0d171b]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-[#0d171b] text-lg font-bold leading-tight tracking-[-0.015em]">Creative Portfolio</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#0d171b] text-sm font-medium leading-normal" href="#">Home</a>
+              <a class="text-[#0d171b] text-sm font-medium leading-normal" href="#">Projects</a>
+              <a class="text-[#0d171b] text-sm font-medium leading-normal" href="#">About</a>
+              <a class="text-[#0d171b] text-sm font-medium leading-normal" href="#">Contact</a>
+            </div>
+            <button
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#e7eff3] text-[#0d171b] text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">Resume</span>
+            </button>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="flex p-4 @container">
+              <div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-center">
+                <div class="flex gap-4">
+                  <div
+                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7p9IQZ2ma7J-3sf3b4VApuuNti6d7wM7hadtbytovOoA7Za036enlVvjxpfoQN-FFcr61BT4CSUyGjDmxuD8aji4DZQYDG9QaFXDTYtAWz6dizZ7yHWtVBo_x4CUYZkskEP-V0_o_mQFlnsO5L3QxrCF4-31dNB-v6WxolOlY7Yt7gF5v9DAoOTeCt9e66I4_cp0oS28iXC703AqOXhSIei7wr5ts7l5TD7LKjBZiOCP6HynYHf-aSxgPMWvjUbP7KDsqnABakCo");'
+                  ></div>
+                  <div class="flex flex-col justify-center">
+                    <p class="text-[#0d171b] text-[22px] font-bold leading-tight tracking-[-0.015em]">Sophia Carter</p>
+                    <p class="text-[#4c809a] text-base font-normal leading-normal">Creative Director &amp; Designer</p>
+                    <p class="text-[#4c809a] text-base font-normal leading-normal">Based in San Francisco, CA</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="text-[#0d171b] text-base font-normal leading-normal pb-3 pt-1 px-4">
+              I'm a passionate creative director and designer with over 10 years of experience in crafting compelling visual narratives for brands. My expertise spans across
+              various design disciplines, including branding, UI/UX design, and illustration. I thrive on challenges and love collaborating with teams to bring innovative ideas to
+              life.
+            </p>
+            <h2 class="text-[#0d171b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Skills</h2>
+            <div class="flex flex-col gap-3 p-4">
+              <div class="flex gap-6 justify-between">
+                <p class="text-[#0d171b] text-base font-medium leading-normal">UI/UX Design</p>
+                <p class="text-[#0d171b] text-sm font-normal leading-normal">90%</p>
+              </div>
+              <div class="rounded bg-[#cfdfe7]"><div class="h-2 rounded bg-[#13a4ec]" style="width: 90%;"></div></div>
+            </div>
+            <div class="flex flex-col gap-3 p-4">
+              <div class="flex gap-6 justify-between">
+                <p class="text-[#0d171b] text-base font-medium leading-normal">Branding</p>
+                <p class="text-[#0d171b] text-sm font-normal leading-normal">85%</p>
+              </div>
+              <div class="rounded bg-[#cfdfe7]"><div class="h-2 rounded bg-[#13a4ec]" style="width: 85%;"></div></div>
+            </div>
+            <div class="flex flex-col gap-3 p-4">
+              <div class="flex gap-6 justify-between">
+                <p class="text-[#0d171b] text-base font-medium leading-normal">Illustration</p>
+                <p class="text-[#0d171b] text-sm font-normal leading-normal">75%</p>
+              </div>
+              <div class="rounded bg-[#cfdfe7]"><div class="h-2 rounded bg-[#13a4ec]" style="width: 75%;"></div></div>
+            </div>
+            <div class="flex flex-col gap-3 p-4">
+              <div class="flex gap-6 justify-between">
+                <p class="text-[#0d171b] text-base font-medium leading-normal">Creative Direction</p>
+                <p class="text-[#0d171b] text-sm font-normal leading-normal">80%</p>
+              </div>
+              <div class="rounded bg-[#cfdfe7]"><div class="h-2 rounded bg-[#13a4ec]" style="width: 80%;"></div></div>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
-
-    <section>
-      <h2>履歷</h2>
-      <p>下載 PDF：<a href="#" target="_blank" rel="noopener">Resume.pdf</a>（可把檔案放在 <code>/assets</code> 後更新連結）</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <small>© 2025 小糯米</small>
-  </footer>
-</body>
+    </div>
+  </body>
 </html>
