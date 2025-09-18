@@ -1,68 +1,111 @@
-<!doctype html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>作品集 | 小糯米</title>
-  <meta name="description" content="專案清單與技術簡述">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="sub-header">
-    <nav class="nav">
-      <a class="logo" href="./">小糯米</a>
-      <ul class="menu inline">
-        <li><a href="./projects.html" class="active">作品集</a></li>
-        <li><a href="./about.html">關於我</a></li>
-      </ul>
-    </nav>
-    <h1>作品集</h1>
-    <p class="sub">把想法具體化到產品原型與技術 Demo。</p>
-  </header>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
+    />
 
-  <main class="container">
-    <div class="grid">
-      <article class="card">
-        <img src="assets/placeholder.svg" alt="語音指令專案示意圖">
-        <h3>語音指令燈光控制</h3>
-        <ul class="meta">
-          <li>模型：簡單 CNN</li>
-          <li>資料：Speech Commands</li>
-          <li>結果：測試準確率 94%+</li>
-        </ul>
-        <p>整合麥克風輸入與裝置控制，以最小化延遲為目標。</p>
-        <p><a href="#" target="_blank" rel="noopener">GitHub</a> ・ <a href="#" target="_blank" rel="noopener">文章</a></p>
-      </article>
+    <title>Stitch Design</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
-      <article class="card">
-        <img src="assets/placeholder.svg" alt="YOLO 追蹤專案示意圖">
-        <h3>YOLOv10 + BoT‑SORT 追蹤</h3>
-        <ul class="meta">
-          <li>偵測：YOLOv10</li>
-          <li>追蹤：BoT‑SORT</li>
-          <li>輸出：事件日誌（進/出）</li>
-        </ul>
-        <p>長時間穩定追蹤動物行為，並以時間戳記記錄事件。</p>
-        <p><a href="#" target="_blank" rel="noopener">GitHub</a></p>
-      </article>
-
-      <article class="card">
-        <img src="assets/placeholder.svg" alt="LSTM 語音專案示意圖">
-        <h3>LSTM 語音序列</h3>
-        <ul class="meta">
-          <li>任務：關鍵詞辨識</li>
-          <li>技巧：資料增強、正規化</li>
-          <li>工具：PyTorch</li>
-        </ul>
-        <p>從資料前處理到模型訓練的坑位與復盤。</p>
-        <p><a href="#" target="_blank" rel="noopener">文章</a></p>
-      </article>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div class="relative flex h-auto min-h-screen w-full flex-col bg-neutral-50 group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+      <div class="layout-container flex h-full grow flex-col">
+        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#ededed] px-10 py-3">
+          <div class="flex items-center gap-4 text-[#141414]">
+            <div class="size-4">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h2 class="text-[#141414] text-lg font-bold leading-tight tracking-[-0.015em]">Creative Portfolio</h2>
+          </div>
+          <div class="flex flex-1 justify-end gap-8">
+            <div class="flex items-center gap-9">
+              <a class="text-[#141414] text-sm font-medium leading-normal" href="#">About</a>
+              <a class="text-[#141414] text-sm font-medium leading-normal" href="#">Projects</a>
+              <a class="text-[#141414] text-sm font-medium leading-normal" href="#">Contact</a>
+            </div>
+            <button
+              class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#ededed] text-[#141414] text-sm font-bold leading-normal tracking-[0.015em]"
+            >
+              <span class="truncate">Resume</span>
+            </button>
+          </div>
+        </header>
+        <div class="px-40 flex flex-1 justify-center py-5">
+          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+            <div class="@container">
+              <div class="@[480px]:p-4">
+                <div
+                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-lg items-center justify-center p-4"
+                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCi2NqF9G9IBfBBg7qXizmNfYtut2tisC6iULUoUC5pUoTp_xIOmqS5HO6oyDAw9IRPrcd9LCgbh6hg1_T7J12w-fOB4tJJXbqp5OZ68SMNiOemfw2Td_7m8EEBGpoFIjLHmi_l68w0H2HIbvKIoqa-6Ab0uzfdRU2GGs9m-7r5dfJjZ5I7NQJxQP3SfzHA3NnNA8rEkBqVlLJCpc5O20XbYMf5V1PbM_1Wx8W0Fyri0gAGcPI5fAPov9SMMwGtlyArCDYt4CjpZsM");'
+                >
+                  <div class="flex flex-col gap-2 text-center">
+                    <h1
+                      class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+                    >
+                      Hi, I'm Alex, a Designer
+                    </h1>
+                    <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                      I craft digital experiences that are both beautiful and functional. Explore my portfolio to see my latest work and learn more about my design philosophy.
+                    </h2>
+                  </div>
+                  <button
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-black text-neutral-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
+                  >
+                    <span class="truncate">View Portfolio</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="flex justify-center">
+          <div class="flex max-w-[960px] flex-1 flex-col">
+            <footer class="flex flex-col gap-6 px-5 py-10 text-center @container">
+              <div class="flex flex-wrap justify-center gap-4">
+                <a href="#">
+                  <div class="text-neutral-500" data-icon="TwitterLogo" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </a>
+                <a href="#">
+                  <div class="text-neutral-500" data-icon="InstagramLogo" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </a>
+                <a href="#">
+                  <div class="text-neutral-500" data-icon="LinkedinLogo" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                      <path
+                        d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </a>
+              </div>
+              <p class="text-neutral-500 text-base font-normal leading-normal">@2024 Alex's Portfolio</p>
+            </footer>
+          </div>
+        </footer>
+      </div>
     </div>
-  </main>
-
-  <footer class="site-footer">
-    <small>© 2025 小糯米</small>
-  </footer>
-</body>
+  </body>
 </html>
