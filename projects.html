@@ -210,9 +210,12 @@
             b.setAttribute('aria-pressed','false');
           });
         }
-        function styleActiveBtn(btn, value) {
-          const c = COLORS[value] || COLORS['all'];
-          btn.className = `${BTN_BASE} ${c.btn}`;
+        function styleActiveBtn(btn /*, value */) {
+          // 按鈕高亮樣式：亮色=黑底白字，深色=白底黑字
+          const ACTIVE =
+            'bg-slate-900 text-white dark:bg-white dark:text-black';
+
+          btn.className = `${BTN_BASE} ${ACTIVE}`;
           btn.setAttribute('aria-pressed','true');
         }
         function updateStateChip(value) {
