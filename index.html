@@ -17,28 +17,34 @@
 <body class="bg-black text-white dark:bg-black dark:text-white"
       style='font-family:"Space Grotesk","Noto Sans",system-ui,sans-serif'>
 
-  <!-- Header (center nav, 置頂透明) -->
+  <!-- Header -->
   <header id="siteHeader"
-  class="fixed inset-x-0 top-0 z-40 bg-black/35 backdrop-blur border-b border-white/10 text-white">
+  class="fixed inset-x-0 top-0 z-40
+         bg-white/80 text-slate-900 border-b border-slate-200/80 backdrop-blur
+         dark:bg-black/40 dark:text-white dark:border-white/10
+         transition-colors">
   <div class="relative mx-auto max-w-[1100px] h-14 sm:h-16">
 
-    <!-- 置中品牌（absolute + translate-x-1/2） -->
+    <!-- 置中品牌 -->
     <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
       <a href="./" class="flex items-center gap-3">
         <img src="./assets/m2.png" alt="Emily Tu" width="28" height="28"
-             class="h-7 w-7 rounded-full object-cover ring-1 ring-white/30">
+             class="h-7 w-7 rounded-full object-cover ring-1 ring-black/10 dark:ring-white/30">
         <span class="text-lg font-bold tracking-[-.015em]">Emily Tu</span>
       </a>
     </div>
 
-    <!-- 右側：行動選單（需要的話保留；不需要可刪） -->
-    <button id="menuBtn" aria-controls="navMenu" aria-expanded="false" title="開關選單"
-            class="sm:hidden absolute right-3 top-1/2 -translate-y-1/2
-                   rounded-lg h-10 w-10 grid place-items-center bg-white/15 hover:bg-white/25">
-      ☰
-    </button>
+    <!-- 右側：主題切換 -->
+    <button id="themeToggle"
+            class="absolute right-3 top-1/2 -translate-y-1/2
+                   rounded-lg h-10 w-10 grid place-items-center
+                   bg-slate-200 text-slate-900
+                   hover:bg-slate-300
+                   dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700
+                   transition-colors"
+            title="切換深/淺色" aria-label="切換深/淺色">🌓</button>
   </div>
-</header>
+  </header>
 
   <!-- HERO：全螢幕背景輪播 -->
   <section id="hero" class="relative h-[88svh] sm:h-[94svh] overflow-hidden">
@@ -55,7 +61,7 @@
         <!-- 名稱 & 標語 -->
         <h1 class="text-2xl sm:text-3xl font-bold drop-shadow">Emily Tu</h1>
         <p class="mt-2 text-sm sm:text-base text-white/85 drop-shadow">
-          Computer Science / HCI &nbsp;•&nbsp; Programming / Reading / Hiking / Photography
+          Data Science / HCI &nbsp;•&nbsp; Programming / Reading / Music / Photography
         </p>
 
         <!-- CTA：Work / About / Contact -->
