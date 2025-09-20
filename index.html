@@ -31,16 +31,16 @@
   <header class="absolute inset-x-0 top-0 z-30">
     <nav class="mx-auto max-w-[1100px] flex items-center justify-center gap-8 py-4 text-sm font-medium
                 text-white/90 backdrop-blur">
-      <a href="./index.html#work"   class="hover:opacity-80">Work</a>
+      <a href="./index.html"   class="hover:opacity-80">Work</a>
       <a href="./about.html"        class="hover:opacity-80">About</a>
-      <a href="./index.html#contact"class="hover:opacity-80">Contact</a>
+      <a href="./index.html" class="hover:opacity-80">Contact</a>
     </nav>
   </header>
 
   <!-- HERO：全螢幕背景輪播 -->
   <section id="hero" class="relative h-[88svh] sm:h-[94svh] overflow-hidden">
     <!-- 背景圖容器（JS 動態塞 img） -->
-    <div id="bg" class="absolute inset-0 -z-10"></div>
+    <div id="bg" class="absolute inset-0 -z-10 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900"></div>
 
     <!-- 上下漸層，讓字可讀 -->
     <div class="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/60 to-transparent"></div>
@@ -120,7 +120,7 @@
   <script>
     // 放你的背景圖（想加就繼續加）
     const IMAGES = [
-      './assets/IMG_7918.jpg',
+      './assets/IMG_7918.JPG',
       './assets/IMG_9879.jpg',
       './assets/hero-3.jpg'
     ];
