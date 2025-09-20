@@ -121,91 +121,83 @@
 
   <!-- Slider / 互動 -->
   <script>
-    // 放你的背景圖（想加就繼續加）
-    const IMAGES = [
-      './assets/IMG_7918.JPG',
-      './assets/IMG_9879.jpg',
-      './assets/IMG_8360.jpg'
-    ];
+  // 放你的背景圖
+  const IMAGES = [
+    './assets/IMG_7918.JPG',
+    './assets/IMG_9879.jpg',
+    './assets/IMG_8360.jpg'
+  ];
 
-    const bg = document.getElementById('bg');
-    const counter = document.getElementById('counter');
-    const prevBtn = document.getElementById('prev');
-    const nextBtn = document.getElementById('next');
-    const toggleBtn = document.getElementById('toggle');
+  const hero   = document.getElementById('hero');
+  const bg     = document.getElementById('bg');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
 
-    // 產生 <img>（全覆蓋、交叉淡入）
-    const slides = IMAGES.map((src, i) => {
-      const img = new Image();
-      img.src = src;
-      img.alt = '';
-      img.decoding = 'async';
-      img.loading = i ? 'lazy' : 'eager';
-      img.className =
-        'absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-700 ease-out will-change-opacity';
-      img.style.transform = 'translateZ(0)'; // GPU compositing
-      img.dataset.index = i;
-      bg.appendChild(img);
-      return img;
+  // 生成 <img>（全覆蓋、交叉淡入）
+  const slides = IMAGES.map((src, i) => {
+    const img = new Image();
+    img.src = src;
+    img.alt = '';
+    img.decoding = 'async';
+    img.loading = i ? 'lazy' : 'eager';
+    img.className = 'absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-700 ease-out will-change-opacity';
+    img.style.transform = 'translateZ(0)';
+    bg.appendChild(img);
+    return img;
+  });
+
+  let idx = 0;
+  let timer = null;
+  const DURATION = 6000;
+  const autoPlayAllowed = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function show(i) {
+    slides[idx]?.classList.remove('opacity-100');
+    slides[i]?.classList.add('opacity-100');
+    idx = i;
+  }
+  function next() { show((idx + 1) % slides.length); }
+  function prev() { show((idx - 1 + slides.length) % slides.length); }
+
+  function start() {
+    if (timer || slides.length < 2) return;
+    timer = setInterval(next, DURATION);
+  }
+  function stop() {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  // 初始顯示與自動播放
+  slides[0]?.classList.add('opacity-100');
+  if (autoPlayAllowed) start();
+
+  // 左右按鈕（手動切換不影響之後自動播放）
+  nextBtn?.addEventListener('click', () => { next(); });
+  prevBtn?.addEventListener('click', () => { prev(); });
+
+  // 滑鼠移入暫停、移出恢復
+  hero.addEventListener('mouseenter', () => timer && stop());
+  hero.addEventListener('mouseleave', () => autoPlayAllowed && start());
+
+  // 手機滑動
+  let x0 = null;
+  hero.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, {passive:true});
+  hero.addEventListener('touchend', e => {
+    if (x0 == null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) { (dx < 0 ? next : prev)(); }
+    x0 = null;
+  }, {passive:true});
+
+  // 不在視窗內就暫停（省電）
+  const io = 'IntersectionObserver' in window && new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if (e.target !== hero) return;
+      if (e.isIntersecting) { autoPlayAllowed && start(); } else { stop(); }
     });
-
-    let idx = 0;
-    let playing = !matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let timer = null;
-    const DURATION = 6000;
-
-    function show(i) {
-      slides[idx]?.classList.remove('opacity-100');
-      slides[i]?.classList.add('opacity-100');
-      idx = i;
-      counter.textContent = `${idx + 1}/${slides.length}`;
-    }
-
-    function next() { show((idx + 1) % slides.length); }
-    function prev() { show((idx - 1 + slides.length) % slides.length); }
-
-    function start() {
-      if (timer || slides.length < 2) return;
-      timer = setInterval(next, DURATION);
-      toggleBtn.textContent = 'Pause';
-    }
-    function stop() {
-      clearInterval(timer); timer = null;
-      toggleBtn.textContent = 'Play';
-    }
-
-    // 初始
-    slides[0]?.classList.add('opacity-100');
-    counter.textContent = `1/${slides.length}`;
-    playing ? start() : stop();
-
-    // 控制
-    nextBtn.addEventListener('click', () => { stop(); next(); });
-    prevBtn.addEventListener('click', () => { stop(); prev(); });
-    toggleBtn.addEventListener('click', () => { playing = !timer; playing ? start() : stop(); });
-
-    // 滑鼠暫停
-    const hero = document.getElementById('hero');
-    hero.addEventListener('mouseenter', () => timer && stop());
-    hero.addEventListener('mouseleave', () => playing && start());
-
-    // 手機滑動
-    let x0 = null;
-    hero.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, {passive:true});
-    hero.addEventListener('touchend', e => {
-      if (x0 == null) return;
-      const dx = e.changedTouches[0].clientX - x0;
-      if (Math.abs(dx) > 40) { stop(); (dx < 0 ? next : prev)(); }
-      x0 = null;
-    });
-
-    // 不在視窗內就暫停（省電）
-    const io = 'IntersectionObserver' in window && new IntersectionObserver(es=>{
-      es.forEach(e=>{ if (e.target!==hero) return;
-        if (e.isIntersecting) { playing && start(); } else { stop(); }
-      });
-    },{threshold:0.2});
-    io && io.observe(hero);
+  },{threshold:0.2});
+  io && io.observe(hero);
   </script>
 </body>
 </html>
