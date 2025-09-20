@@ -23,13 +23,7 @@
   <header class="sticky top-0 z-40 flex items-center justify-between border-b border-neutral-200/70 dark:border-neutral-700/60
                  bg-white/70 dark:bg-neutral-900/70 backdrop-blur px-4 sm:px-10 py-3 transition-shadow">
     <div class="flex items-center gap-3">
-      <!-- logo 圖片（24×24；跟原先 size-4 差不多） -->
-      <img
-        src="./assets/m2.png"
-        alt="Emily Tu"
-        class="h-6 w-6 rounded-full object-cover"
-        width="24" height="24"
-      />
+      <img src="./assets/m2.png" alt="Emily Tu" class="h-6 w-6 rounded-full object-cover" width="24" height="24" />
       <a href="./" class="text-lg font-bold tracking-[-.015em]">Emily Tu</a>
     </div>
 
@@ -38,7 +32,7 @@
       <a data-nav href="./index.html" class="text-sm font-medium hover:opacity-80">Home</a>
       <a data-nav href="./projects.html" class="text-sm font-medium hover:opacity-80">Projects</a>
       <a data-nav href="./about.html" class="text-sm font-medium hover:opacity-80">About</a>
-      </nav>
+    </nav>
 
     <!-- 行動選單 + 主題切換 -->
     <div class="flex items-center gap-2 sm:gap-3">
@@ -52,153 +46,111 @@
   </header>
 
   <main class="max-w-[960px] mx-auto px-4 py-8">
-    <!-- 個人資訊 -->
+
+    <!-- Filters（自動生成分類按鈕會插在這裡） -->
+    <div id="projectFilters" class="mb-4 flex flex-wrap gap-2" aria-label="篩選分類"></div>
+
     <!-- List（條列式，無圖片） -->
-  <section data-reveal class="pb-16">
-    <h2 class="sr-only">Projects</h2>
-    <ul class="divide-y divide-slate-200 dark:divide-slate-800">
-      <!-- iThome 鐵人賽 2025 -->
-      <li class="project-row p-4 hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition"
-          data-tags="Deep Learning,HCI"
-          data-title="iThome 鐵人賽 2025"
-          data-desc="聚焦於深度學習在人機互動中的感知應用，包含動作與情緒辨識模型的實作與部署，探討語音、手勢、情緒等輸入如何結合 UI/UX 元件，打造具回饋能力的介面。"
-          data-link="https://ithelp.ithome.com.tw/m/users/20178436/ironman/8514">
-        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 class="text-base font-semibold">iThome 鐵人賽 2025</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-300">
-              聚焦於深度學習在人機互動中的感知應用，包含動作與情緒辨識模型的實作與部署…
-            </p>
-            <div class="mt-2 flex flex-wrap gap-2">
-              <span class="inline-block rounded-full bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300 px-2 py-0.5 text-xs">Deep Learning</span>
-              <span class="inline-block rounded-full bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-900/40 dark:text-fuchsia-300 px-2 py-0.5 text-xs">HCI</span>
+    <section data-reveal class="pb-16">
+      <h2 class="sr-only">Projects</h2>
+      <ul class="divide-y divide-slate-200 dark:divide-slate-800">
+        <!-- iThome 鐵人賽 2025 -->
+        <li class="project-row p-4 hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition"
+            data-tags="Deep Learning,HCI"
+            data-title="iThome 鐵人賽 2025"
+            data-desc="聚焦於深度學習在人機互動中的感知應用，包含動作與情緒辨識模型的實作與部署，探討語音、手勢、情緒等輸入如何結合 UI/UX 元件，打造具回饋能力的介面。"
+            data-link="https://ithelp.ithome.com.tw/m/users/20178436/ironman/8514">
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 class="text-base font-semibold">iThome 鐵人賽 2025</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300">
+                聚焦於深度學習在人機互動中的感知應用，包含動作與情緒辨識模型的實作與部署…
+              </p>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span class="inline-block rounded-full bg-sky-100 text-sky-700 dark:bg-sky-900/40 dark:text-sky-300 px-2 py-0.5 text-xs">Deep Learning</span>
+                <span class="inline-block rounded-full bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-900/40 dark:text-fuchsia-300 px-2 py-0.5 text-xs">HCI</span>
+              </div>
+            </div>
+            <div class="flex gap-2 mt-2 sm:mt-0">
+              <a class="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-sm hover:bg-white dark:hover:bg-slate-800"
+                 href="https://ithelp.ithome.com.tw/m/users/20178436/ironman/8514" target="_blank" rel="noopener">Open</a>
+              <button class="js-open-modal rounded-lg bg-slate-900 text-white dark:bg-white dark:text-black px-3 py-1.5 text-sm">Quick view</button>
             </div>
           </div>
-          <div class="flex gap-2 mt-2 sm:mt-0">
-            <a class="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-sm hover:bg-white dark:hover:bg-slate-800"
-              href="https://ithelp.ithome.com.tw/m/users/20178436/ironman/8514" target="_blank" rel="noopener">Open</a>
-            <button class="js-open-modal rounded-lg bg-slate-900 text-white dark:bg-white dark:text-black px-3 py-1.5 text-sm">Quick view</button>
-          </div>
-        </div>
-      </li>
+        </li>
 
-      <!-- 畢業專題 -->
-      <li class="project-row p-4 hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition"
-          data-tags="cv,hci"
-          data-title="畢業專題"
-          data-desc="多目標長時間追蹤，穩定輸出進/出事件日誌，用於動物行為分析。"
-          data-link="https://github.com/minsnow">
-        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 class="text-base font-semibold">畢業專題</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-300">多目標長時間追蹤，穩定輸出進/出事件日誌，用於動物行為分析。</p>
-            <div class="mt-2 flex flex-wrap gap-2">
-              <span class="inline-block rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 px-2 py-0.5 text-xs">CV</span>
-              <span class="inline-block rounded-full bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-900/40 dark:text-fuchsia-300 px-2 py-0.5 text-xs">HCI</span>
+        <!-- 畢業專題 -->
+        <li class="project-row p-4 hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition"
+            data-tags="CV,HCI"
+            data-title="畢業專題"
+            data-desc="多目標長時間追蹤，穩定輸出進/出事件日誌，用於動物行為分析。"
+            data-link="https://github.com/minsnow">
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 class="text-base font-semibold">畢業專題</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300">多目標長時間追蹤，穩定輸出進/出事件日誌，用於動物行為分析。</p>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span class="inline-block rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300 px-2 py-0.5 text-xs">CV</span>
+                <span class="inline-block rounded-full bg-fuchsia-100 text-fuchsia-700 dark:bg-fuchsia-900/40 dark:text-fuchsia-300 px-2 py-0.5 text-xs">HCI</span>
+              </div>
+            </div>
+            <div class="flex gap-2 mt-2 sm:mt-0">
+              <a class="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-sm hover:bg-white dark:hover:bg-slate-800"
+                 href="https://github.com/minsnow" target="_blank" rel="noopener">Open</a>
+              <button class="js-open-modal rounded-lg bg-slate-900 text-white dark:bg-white dark:text-black px-3 py-1.5 text-sm">Quick view</button>
             </div>
           </div>
-          <div class="flex gap-2 mt-2 sm:mt-0">
-            <a class="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-sm hover:bg-white dark:hover:bg-slate-800"
-              href="https://github.com/minsnow" target="_blank" rel="noopener">Open</a>
-            <button class="js-open-modal rounded-lg bg-slate-900 text-white dark:bg-white dark:text-black px-3 py-1.5 text-sm">Quick view</button>
-          </div>
-        </div>
-      </li>
+        </li>
 
-      <!-- LSTM 筆記 -->
-      <li class="project-row p-4 hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition"
-          data-tags="audio"
-          data-title="LSTM Audio Notes"
-          data-desc="語音序列前處理、資料增強與訓練流程整理。"
-          data-link="#">
-        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 class="text-base font-semibold">LSTM Audio Notes</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-300">語音序列前處理、資料增強與訓練流程整理。</p>
-            <div class="mt-2 flex flex-wrap gap-2">
-              <span class="inline-block rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 px-2 py-0.5 text-xs">Audio</span>
+        <!-- LSTM 筆記 -->
+        <li class="project-row p-4 hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition"
+            data-tags="Audio"
+            data-title="LSTM Audio Notes"
+            data-desc="語音序列前處理、資料增強與訓練流程整理。"
+            data-link="#">
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 class="text-base font-semibold">LSTM Audio Notes</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300">語音序列前處理、資料增強與訓練流程整理。</p>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span class="inline-block rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 px-2 py-0.5 text-xs">Audio</span>
+              </div>
+            </div>
+            <div class="flex gap-2 mt-2 sm:mt-0">
+              <a class="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-sm hover:bg-white dark:hover:bg-slate-800"
+                 href="#" target="_blank" rel="noopener">Open</a>
+              <button class="js-open-modal rounded-lg bg-slate-900 text-white dark:bg-white dark:text-black px-3 py-1.5 text-sm">Quick view</button>
             </div>
           </div>
-          <div class="flex gap-2 mt-2 sm:mt-0">
-            <a class="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-sm hover:bg-white dark:hover:bg-slate-800"
-              href="#" target="_blank" rel="noopener">Open</a>
-            <button class="js-open-modal rounded-lg bg-slate-900 text-white dark:bg-white dark:text-black px-3 py-1.5 text-sm">Quick view</button>
-          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Quick View Modal -->
+    <div id="projectModal"
+         class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur">
+      <div class="w-full max-w-lg rounded-xl bg-white text-slate-900 dark:bg-slate-900 dark:text-white shadow-xl">
+        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-5 py-3">
+          <h3 id="mTitle" class="text-lg font-semibold">Title</h3>
+          <button id="mClose" class="rounded p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="關閉">✕</button>
         </div>
-      </li>
-    </ul>
-  </section>
-
-<!-- Modal（沿用 Quick view） -->
-<div id="projectModal"
-     class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur">
-  <div class="w-full max-w-lg rounded-xl bg-white text-slate-900 dark:bg-slate-900 dark:text-white shadow-xl">
-    <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-5 py-3">
-      <h3 id="mTitle" class="text-lg font-semibold">Title</h3>
-      <button id="mClose" class="rounded p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800">✕</button>
+        <div class="px-5 py-4">
+          <p id="mDesc" class="text-sm text-slate-700 dark:text-slate-300">Description…</p>
+          <div id="mTags" class="mt-3 flex flex-wrap gap-2"></div>
+        </div>
+        <div class="flex justify-end gap-2 border-t border-slate-200 dark:border-slate-800 px-5 py-3">
+          <a id="mLink" href="#" target="_blank" rel="noopener"
+             class="rounded-lg bg-slate-900 text-white dark:bg-white dark:text-black px-3 py-1.5 text-sm">Open</a>
+          <button id="mClose2" class="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-sm">Close</button>
+        </div>
+      </div>
     </div>
-    <div class="px-5 py-4">
-      <p id="mDesc" class="text-sm text-slate-700 dark:text-slate-300">Description…</p>
-      <div id="mTags" class="mt-3 flex flex-wrap gap-2"></div>
-    </div>
-    <div class="flex justify-end gap-2 border-t border-slate-200 dark:border-slate-800 px-5 py-3">
-      <a id="mLink" href="#" target="_blank" rel="noopener"
-         class="rounded-lg bg-slate-900 text-white dark:bg-white dark:text-black px-3 py-1.5 text-sm">Open</a>
-      <button id="mClose2" class="rounded-lg border border-slate-300 dark:border-slate-700 px-3 py-1.5 text-sm">Close</button>
-    </div>
-  </div>
-</div>
 
-<script>
-  // Quick view：從 li 的 data-* 填入 modal
-  const modal = document.getElementById('projectModal');
-  const mTitle = document.getElementById('mTitle');
-  const mDesc  = document.getElementById('mDesc');
-  const mTags  = document.getElementById('mTags');
-  const mLink  = document.getElementById('mLink');
-  const openBtns = document.querySelectorAll('.js-open-modal');
-  const hide = () => modal.classList.add('hidden');
-  const show = () => modal.classList.remove('hidden');
-
-  openBtns.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const row = btn.closest('.project-row');
-      mTitle.textContent = row.dataset.title || 'Untitled';
-      mDesc.textContent  = row.dataset.desc  || '';
-      mLink.href         = row.dataset.link  || '#';
-      // tags
-      mTags.innerHTML = '';
-      (row.dataset.tags || '').split(',').map(t=>t.trim()).filter(Boolean).forEach(t=>{
-        const span = document.createElement('span');
-        span.className = 'inline-block rounded-full bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-100 px-2 py-0.5 text-xs';
-        span.textContent = t;
-        mTags.appendChild(span);
-      });
-      show();
-    });
-  });
-  document.getElementById('mClose').onclick = hide;
-  document.getElementById('mClose2').onclick = hide;
-  modal.addEventListener('click', (e)=>{ if(e.target===modal) hide(); });
-  window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hide(); });
-</script>
-
-     <!-- Footer -->
+    <!-- Footer -->
     <footer id="contact" class="py-10 text-center">
       <p class="text-neutral-500">@2025 minsnow</p>
     </footer>
   </main>
-
-  <!-- Quick View Modal -->
-  <div id="modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 p-4">
-    <div class="w-full max-w-lg rounded-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white p-6 relative">
-      <button id="modalClose" class="absolute right-3 top-3 text-2xl leading-none" aria-label="關閉">×</button>
-      <h3 id="modalTitle" class="text-xl font-bold mb-2">Project</h3>
-      <p id="modalDesc" class="mb-4 text-slate-600 dark:text-slate-300"></p>
-      <a id="modalLink" href="#" target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2 rounded-lg bg-black text-white dark:bg-white dark:text-black px-4 py-2">前往專案</a>
-    </div>
-  </div>
 
   <!-- Back to top -->
   <button id="toTop" class="fixed right-4 bottom-4 hidden sm:grid place-items-center rounded-full w-10 h-10 bg-black text-white dark:bg-white dark:text-black">↑</button>
@@ -220,7 +172,7 @@
     const navMenu = document.getElementById('navMenu');
     menuBtn?.addEventListener('click', () => navMenu?.classList.toggle('hidden'));
 
-    // --- Header 陰影（已 sticky + backdrop）---
+    // --- Header 陰影 & 返回頂部 ---
     const header = document.querySelector('header');
     const onScroll = () => {
       if (window.scrollY > 6) header.classList.add('shadow-md'); else header.classList.remove('shadow-md');
@@ -240,7 +192,7 @@
       });
     })();
 
-    // --- 滾動進場（IntersectionObserver）---
+    // --- 滾動進場 ---
     const revealEls = document.querySelectorAll('[data-reveal]');
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver(entries => {
@@ -258,50 +210,109 @@
       });
     }
 
+    // --- Quick view（單一 modal） ---
+    (function(){
+      const modal = document.getElementById('projectModal');
+      const mTitle = document.getElementById('mTitle');
+      const mDesc  = document.getElementById('mDesc');
+      const mTags  = document.getElementById('mTags');
+      const mLink  = document.getElementById('mLink');
+      const hide = () => modal.classList.add('hidden');
+      const show = () => modal.classList.remove('hidden');
+
+      document.querySelectorAll('.js-open-modal').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const row = btn.closest('.project-row');
+          mTitle.textContent = row.dataset.title || 'Untitled';
+          mDesc.textContent  = row.dataset.desc  || '';
+          mLink.href         = row.dataset.link  || '#';
+          mTags.innerHTML = '';
+          (row.dataset.tags || '').split(',').map(t=>t.trim()).filter(Boolean).forEach(t=>{
+            const span = document.createElement('span');
+            span.className = 'inline-block rounded-full bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-100 px-2 py-0.5 text-xs';
+            span.textContent = t;
+            mTags.appendChild(span);
+          });
+          show();
+        });
+      });
+      document.getElementById('mClose').onclick = hide;
+      document.getElementById('mClose2').onclick = hide;
+      modal.addEventListener('click', (e)=>{ if(e.target===modal) hide(); });
+      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hide(); });
+    })();
+
+    // --- 分類按鈕（自動從 data-tags 生成） ---
+    (function () {
+      const list = document.querySelectorAll('.project-row');
+      const bar  = document.getElementById('projectFilters');
+      if (!bar || !list.length) return;
+
+      // 收集所有 tag（維持顯示字樣；比對用小寫）
+      const tagDisplay = new Map();
+      list.forEach(li => {
+        (li.dataset.tags || '')
+          .split(',')
+          .map(t => t.trim())
+          .filter(Boolean)
+          .forEach(t => {
+            const lower = t.toLowerCase();
+            if (!tagDisplay.has(lower)) tagDisplay.set(lower, t);
+          });
+      });
+
+      const makeBtn = (label, value) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.dataset.value = value; // 'all' 或 tag lower
+        btn.className = `
+          filter-btn inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm
+          border transition
+          border-slate-300 bg-white text-slate-900 hover:bg-slate-50
+          dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700
+        `.replace(/\s+/g,' ').trim();
+        btn.textContent = label;
+        return btn;
+      };
+
+      // 插入「All」
+      const allBtn = makeBtn('All', 'all');
+      bar.appendChild(allBtn);
+
+      // 依字母排序生成
+      [...tagDisplay.entries()]
+        .sort((a,b)=> a[1].localeCompare(b[1],'zh-Hant'))
+        .forEach(([lower, disp]) => bar.appendChild(makeBtn(disp, lower)));
+
+      const setActive = (btn) => {
+        bar.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('bg-slate-900','text-white','dark:bg-white','dark:text-black');
+        });
+        btn.classList.add('bg-slate-900','text-white','dark:bg-white','dark:text-black');
+      };
+
+      const applyFilter = (value) => {
+        list.forEach(li => {
+          const tags = (li.dataset.tags || '').split(',').map(s=>s.trim().toLowerCase());
+          const show = value === 'all' ? true : tags.includes(value);
+          li.classList.toggle('hidden', !show);
+        });
+      };
+
+      bar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        setActive(btn);
+        applyFilter(btn.dataset.value);
+      });
+
+      // 預設：All
+      setActive(allBtn);
+      applyFilter('all');
+    })();
+
     // --- 返回頂部 ---
     document.getElementById('toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // --- 篩選 ---
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.project-card');
-    function applyFilter(tag){
-      cards.forEach(c => {
-        const tags = (c.dataset.tags || '').split(',').map(s => s.trim());
-        const show = tag === 'all' || tags.includes(tag);
-        c.style.display = show ? '' : 'none';
-      });
-      filterBtns.forEach(b => b.classList.remove('ring-2','ring-black','dark:ring-white'));
-      document.querySelector(`.filter-btn[data-filter="${tag}"]`)?.classList.add('ring-2','ring-black','dark:ring-white');
-    }
-    filterBtns.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
-    if (filterBtns.length) applyFilter('all');
-
-    // --- Modal ---
-    const modal = document.getElementById('modal');
-    const modalClose = document.getElementById('modalClose');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalLink = document.getElementById('modalLink');
-
-    function openModal({title, desc, link}) {
-      modalTitle.textContent = title || 'Project';
-      modalDesc.textContent = desc || '';
-      if (link && link !== '#') { modalLink.href = link; modalLink.classList.remove('pointer-events-none','opacity-50'); }
-      else { modalLink.href = '#'; modalLink.classList.add('pointer-events-none','opacity-50'); }
-      modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow = 'hidden';
-    }
-    function closeModal() { modal.classList.add('hidden'); modal.classList.remove('flex'); document.body.style.overflow = ''; }
-
-    document.querySelectorAll('.js-open-modal').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const card = btn.closest('.project-card');
-        openModal({ title: card?.dataset.title, desc: card?.dataset.desc, link: card?.dataset.link });
-      });
-    });
-    modalClose?.addEventListener('click', closeModal);
-    modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
   </script>
 </body>
 </html>
