@@ -204,11 +204,13 @@
           .sort((a,b)=> a[1].localeCompare(b[1],'zh-Hant'))
           .forEach(([lower, disp]) => bar.appendChild(makeBtn(disp, lower)));
 
-        function clearBtnStyles() {
-          bar.querySelectorAll('.filter-btn').forEach(b => {
-            b.className = BTN_BASE;
-            b.setAttribute('aria-pressed','false');
-          });
+        function styleActiveBtn(btn /*, value */) {
+          // 亮色：黑底白字；深色：白底黑字（! 代表強制覆蓋）
+          const ACTIVE =
+            'bg-slate-900 text-white dark:bg-white dark:!text-black';
+
+          btn.className = `${BTN_BASE} ${ACTIVE}`;
+          btn.setAttribute('aria-pressed','true');
         }
         function styleActiveBtn(btn, value) {
           const c = COLORS[value] || COLORS['all'];
