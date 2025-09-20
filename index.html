@@ -5,166 +5,194 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Emily Tu</title>
 
-  <!-- 字體 -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts + Tailwind -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" as="style" onload="this.rel='stylesheet'"
-        href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700"/>
-
-  <!-- Tailwind：啟用 darkMode -->
-  <script>tailwind.config = { darkMode: 'class' };</script>
+        href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;600;700&family=Space+Grotesk:wght@400;600;700">
+  <script>tailwind={config:{darkMode:'class'}};</script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
   <meta name="theme-color" content="#0b0b0b">
 </head>
-<body class="bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50"
-      style='font-family:"Space Grotesk","Noto Sans",sans-serif'>
 
-  <!-- Header -->
-  <header class="sticky top-0 z-40 flex items-center justify-between border-b border-neutral-200/70 dark:border-neutral-700/60
-                 bg-white/70 dark:bg-neutral-900/70 backdrop-blur px-4 sm:px-10 py-3 transition-shadow">
-    <div class="flex items-center gap-3">
-      <!-- logo 圖片（24×24；跟原先 size-4 差不多） -->
-      <img
-        src="./assets/m2.png"
-        alt="Emily Tu"
-        class="h-6 w-6 rounded-full object-cover"
-        width="24" height="24"
-      />
-      <a href="./" class="text-lg font-bold tracking-[-.015em]">Emily Tu</a>
-    </div>
-    <!-- 導覽列（手機預設收起） -->
-    <nav id="navMenu" class="hidden sm:flex items-center gap-6">
-      <a data-nav href="./index.html" class="text-sm font-medium hover:opacity-80">Home</a>
-      <a data-nav href="./projects.html" class="text-sm font-medium hover:opacity-80">Projects</a>
-      <a data-nav href="./about.html" class="text-sm font-medium hover:opacity-80">About</a>
+<body class="bg-black text-white dark:bg-black dark:text-white"
+      style='font-family:"Space Grotesk","Noto Sans",system-ui,sans-serif'>
+
+  <!-- Header (center nav, 置頂透明) -->
+  <header class="absolute inset-x-0 top-0 z-30">
+    <nav class="mx-auto max-w-[1100px] flex items-center justify-center gap-8 py-4 text-sm font-medium
+                text-white/90 backdrop-blur">
+      <a href="./index.html#work"   class="hover:opacity-80">Work</a>
+      <a href="./about.html"        class="hover:opacity-80">About</a>
+      <a href="./index.html#contact"class="hover:opacity-80">Contact</a>
     </nav>
-    <!-- 行動選單鍵 + 主題切換 -->
-    <div class="flex items-center gap-2 sm:gap-3">
-      <button id="themeToggle"
-              class="rounded-lg h-10 w-10 grid place-items-center bg-slate-200 dark:bg-neutral-800"
-              title="切換深/淺色">🌓</button>
-      <button id="menuBtn"
-              class="sm:hidden rounded-lg h-10 w-10 grid place-items-center bg-neutral-200 dark:bg-neutral-800"
-              aria-controls="navMenu" aria-expanded="false" title="開關選單">☰</button>
-    </div>
   </header>
-  <!-- Hero -->
-  <section class="px-4 sm:px-10 py-10">
-    <div class="max-w-[960px] mx-auto">
-      <div data-reveal
-           class="min-h-[420px] rounded-lg bg-center bg-cover flex flex-col items-center justify-center gap-4 text-center p-6
-                  shadow-sm dark:shadow-none"
-           style='background-image:linear-gradient(rgba(0,86,245,.30),rgba(89,161,255,.35)),
-                  url("https://lh3.googleusercontent.com/aida-public/AB6AXuCi2NqF9G9IBfBBg7qXizmNfYtut2tisC6iULUoUC5pUoTp_xIOmqS5HO6oyDAw9IRPrcd9LCgbh6hg1_T7J12w-fOB4tJJXbqp5OZ68SMNiOemfw2Td_7m8EEBGpoFIjLHmi_l68w0H2HIbvKIoqa-6Ab0uzfdRU2GGs9m-7r5dfJjZ5I7NQJxQP3SfzHA3NnNA8rEkBqVlLJCpc5O20XbYMf5V1PbM_1Wx8W0Fyri0gAGcPI5fAPov9SMMwGtlyArCDYt4CjpZsM");'>
-        <h1 class="text-white text-4xl sm:text-5xl font-black tracking-[-.03em]">Hi, I’m Emily — Data Science × HCI</h1>
-        <p class="text-white/95 max-w-[680px]">I build CV/Audio + interaction demos and tidy write-ups so people can actually use them.</p>
-        <div class="flex gap-3">
-          <a href="./projects.html" class="rounded-lg bg-black text-white dark:bg-white dark:text-black h-12 px-5 flex items-center font-bold">View Projects</a>
-          <a href="./about.html" class="rounded-lg border border-black dark:border-white h-12 px-5 flex items-center font-bold">About Me</a>
+
+  <!-- HERO：全螢幕背景輪播 -->
+  <section id="hero" class="relative h-[88svh] sm:h-[94svh] overflow-hidden">
+    <!-- 背景圖容器（JS 動態塞 img） -->
+    <div id="bg" class="absolute inset-0 -z-10"></div>
+
+    <!-- 上下漸層，讓字可讀 -->
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/60 to-transparent"></div>
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-60 bg-gradient-to-t from-black/70 to-transparent"></div>
+
+    <!-- 右上角計數器 -->
+    <div class="absolute right-3 top-3 z-20 rounded-full bg-black/45 px-3 py-1 text-sm backdrop-blur">
+      <span id="counter">1/3</span>
+    </div>
+
+    <!-- 前景內容 -->
+    <div class="relative z-10 mx-auto flex h-full max-w-[1100px] items-center justify-center px-4">
+      <div class="text-center">
+        <!-- 頭像 -->
+        <img src="./assets/Me.jpg" alt="Emily Tu"
+             class="mx-auto mb-4 size-28 sm:size-32 rounded-full object-cover ring-2 ring-white/70 shadow-lg shadow-black/40">
+        <!-- 名稱 & 標語 -->
+        <h1 class="text-2xl sm:text-3xl font-bold drop-shadow">Emily Tu</h1>
+        <p class="mt-2 text-sm sm:text-base text-white/85 drop-shadow">
+          Computer Science / HCI &nbsp;•&nbsp; Programming / Reading / Hiking / Photography
+        </p>
+
+        <!-- CTA -->
+        <div class="mt-5">
+          <a href="#contact"
+             class="inline-flex items-center gap-2 rounded-full bg-white/90 px-5 py-2 text-black hover:bg-white
+                    active:scale-95 transition">
+            Get in touch
+          </a>
+        </div>
+
+        <!-- Socials -->
+        <div class="mt-6 flex justify-center gap-3 text-white/90">
+          <a href="https://github.com/minsnow" aria-label="GitHub" target="_blank" rel="noopener"
+             class="grid size-9 place-items-center rounded-full bg-black/40 hover:bg-black/60 backdrop-blur">
+            <!-- GitHub -->
+            <svg width="22" height="22" viewBox="0 0 256 256" fill="currentColor"><path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28a8,8,0,0,0-6.93-4,59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68Z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/emily-tu-e2003" aria-label="LinkedIn" target="_blank" rel="noopener"
+             class="grid size-9 place-items-center rounded-full bg-black/40 hover:bg-black/60 backdrop-blur">
+            <!-- LinkedIn -->
+            <svg width="22" height="22" viewBox="0 0 256 256" fill="currentColor"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"/></svg>
+          </a>
+          <!-- 你要的其它平台再加 -->
         </div>
       </div>
     </div>
+
+    <!-- 控制鈕 -->
+    <button id="prev" aria-label="Previous"
+            class="absolute left-3 top-1/2 -translate-y-1/2 grid size-10 place-items-center rounded-full
+                   bg-black/45 hover:bg-black/65 backdrop-blur">‹</button>
+    <button id="next" aria-label="Next"
+            class="absolute right-3 top-1/2 -translate-y-1/2 grid size-10 place-items-center rounded-full
+                   bg-black/45 hover:bg-black/65 backdrop-blur">›</button>
+    <button id="toggle" aria-label="Pause / Play"
+            class="absolute right-3 bottom-3 grid h-10 px-3 place-items-center rounded-full
+                   bg-black/45 hover:bg-black/65 backdrop-blur text-sm">Pause</button>
   </section>
 
-  <!-- Footer -->
-  <footer id="contact" class="py-10 text-center">
-    <div class="flex justify-center gap-4 mb-3 text-neutral-500">
-      <a href="mailto:tu090124@gmail.com" aria-label="email">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256">
-          <path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43Z"/>
-        </svg>
-      </a>
-      <a href="https://github.com/minsnow" target="_blank" rel="noopener" aria-label="github">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256">
-          <path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24,8,8,0,0,0,69.07,28a59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68Z"/>
-        </svg>
-      </a>
-      <a href="https://www.linkedin.com/in/emily-tu-e2003" target="_blank" rel="noopener" aria-label="linkedin">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256">
-          <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm4-28A12,12,0,1,1,88,72,12,12,0,0,1,100,84Zm84,56v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140Z"/>
-        </svg>
-      </a>
-    </div>
-    <p class="text-neutral-500">@2025 minsnow</p>
-  </footer>
+  <!-- 下面自己接 Work / Contact 區塊 -->
+  <section id="contact" class="px-6 py-12 text-center">
+    <h2 class="text-xl font-semibold mb-2">Get in touch</h2>
+    <a class="underline underline-offset-4" href="mailto:tu090124@gmail.com">tu090124@gmail.com</a>
+  </section>
 
-  <!-- 互動腳本：深色/淺色、陰影、錨點、回頂、reveal、選單、高亮 -->
+  <!-- Theme（如果你其它頁也有） -->
   <script>
-    // ----- 主題切換（記憶選擇） -----
     const root = document.documentElement;
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    function setTheme(t){ root.classList.toggle('dark', t==='dark'); localStorage.setItem('theme', t); }
-    setTheme(savedTheme ?? (prefersDark ? 'dark' : 'light'));
-    document.getElementById('themeToggle')?.addEventListener('click', ()=>{
-      setTheme(root.classList.contains('dark') ? 'light' : 'dark');
+    const saved = localStorage.getItem('theme');
+    const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+    const setTheme = t => { root.classList.toggle('dark', t==='dark'); localStorage.setItem('theme', t); };
+    setTheme(saved ?? (prefersDark?'dark':'light'));
+  </script>
+
+  <!-- Slider / 互動 -->
+  <script>
+    // 放你的背景圖（想加就繼續加）
+    const IMAGES = [
+      './assets/hero-1.jpg',
+      './assets/hero-2.jpg',
+      './assets/hero-3.jpg'
+    ];
+
+    const bg = document.getElementById('bg');
+    const counter = document.getElementById('counter');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const toggleBtn = document.getElementById('toggle');
+
+    // 產生 <img>（全覆蓋、交叉淡入）
+    const slides = IMAGES.map((src, i) => {
+      const img = new Image();
+      img.src = src;
+      img.alt = '';
+      img.decoding = 'async';
+      img.loading = i ? 'lazy' : 'eager';
+      img.className =
+        'absolute inset-0 size-full object-cover opacity-0 transition-opacity duration-700 ease-out will-change-opacity';
+      img.style.transform = 'translateZ(0)'; // GPU compositing
+      img.dataset.index = i;
+      bg.appendChild(img);
+      return img;
     });
 
-    // ----- 行動選單 -----
-    const menuBtn  = document.getElementById('menuBtn');
-    const navMenu  = document.getElementById('navMenu');
-    menuBtn?.addEventListener('click', ()=>{
-      const show = navMenu.classList.toggle('hidden');
-      menuBtn.setAttribute('aria-expanded', String(!show));
-    });
+    let idx = 0;
+    let playing = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timer = null;
+    const DURATION = 6000;
 
-    // Header 陰影
-    const header = document.querySelector('header');
-    const shadow = () => {
-      if (!header) return;
-      if (window.scrollY > 6) header.classList.add('shadow-md');
-      else header.classList.remove('shadow-md');
-    };
-    window.addEventListener('scroll', shadow); shadow();
-
-    // 目前頁高亮
-    (() => {
-      const file = location.pathname.split('/').pop() || 'index.html';
-      document.querySelectorAll('a[data-nav]').forEach(a => {
-        const href = a.getAttribute('href');
-        const onHome = (file === 'index.html' || file === '');
-        if ((onHome && (href === './' || href.endsWith('index.html'))) || href.endsWith(file)) {
-          a.classList.add('border-b-2','border-neutral-900','dark:border-neutral-50');
-        }
-      });
-    })();
-
-    // 平滑錨點
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const id = a.getAttribute('href');
-        const el = document.querySelector(id);
-        if (el) { e.preventDefault(); el.scrollIntoView({ behavior:'smooth', block:'start' }); }
-      });
-    });
-
-    // 回到頂端按鈕
-    const toTop = document.createElement('button');
-    toTop.id = 'toTop';
-    toTop.title = 'Back to top';
-    toTop.className = 'fixed right-4 bottom-4 hidden sm:grid place-items-center rounded-full w-10 h-10 bg-black text-white dark:bg-white dark:text-black';
-    toTop.textContent = '↑';
-    document.body.appendChild(toTop);
-    window.addEventListener('scroll', () => { toTop.style.display = window.scrollY > 500 ? 'grid' : 'none'; });
-    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // 滾動進場 reveal
-    const revealEls = document.querySelectorAll('[data-reveal]');
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(entries => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            e.target.classList.add('opacity-100','translate-y-0');
-            e.target.classList.remove('opacity-0','translate-y-4');
-            io.unobserve(e.target);
-          }
-        }
-      }, { threshold: 0.15 });
-      revealEls.forEach(el => {
-        el.classList.add('opacity-0','translate-y-4','transition','duration-700','ease-out','will-change-transform');
-        io.observe(el);
-      });
+    function show(i) {
+      slides[idx]?.classList.remove('opacity-100');
+      slides[i]?.classList.add('opacity-100');
+      idx = i;
+      counter.textContent = `${idx + 1}/${slides.length}`;
     }
+
+    function next() { show((idx + 1) % slides.length); }
+    function prev() { show((idx - 1 + slides.length) % slides.length); }
+
+    function start() {
+      if (timer || slides.length < 2) return;
+      timer = setInterval(next, DURATION);
+      toggleBtn.textContent = 'Pause';
+    }
+    function stop() {
+      clearInterval(timer); timer = null;
+      toggleBtn.textContent = 'Play';
+    }
+
+    // 初始
+    slides[0]?.classList.add('opacity-100');
+    counter.textContent = `1/${slides.length}`;
+    playing ? start() : stop();
+
+    // 控制
+    nextBtn.addEventListener('click', () => { stop(); next(); });
+    prevBtn.addEventListener('click', () => { stop(); prev(); });
+    toggleBtn.addEventListener('click', () => { playing = !timer; playing ? start() : stop(); });
+
+    // 滑鼠暫停
+    const hero = document.getElementById('hero');
+    hero.addEventListener('mouseenter', () => timer && stop());
+    hero.addEventListener('mouseleave', () => playing && start());
+
+    // 手機滑動
+    let x0 = null;
+    hero.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, {passive:true});
+    hero.addEventListener('touchend', e => {
+      if (x0 == null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) { stop(); (dx < 0 ? next : prev)(); }
+      x0 = null;
+    });
+
+    // 不在視窗內就暫停（省電）
+    const io = 'IntersectionObserver' in window && new IntersectionObserver(es=>{
+      es.forEach(e=>{ if (e.target!==hero) return;
+        if (e.isIntersecting) { playing && start(); } else { stop(); }
+      });
+    },{threshold:0.2});
+    io && io.observe(hero);
   </script>
 </body>
 </html>
