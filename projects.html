@@ -281,161 +281,74 @@
 
   <!-- Scripts -->
   <script>
-    // --- 主題切換 ---
-    const root = document.documentElement;
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    function setTheme(t){ root.classList.toggle('dark', t === 'dark'); localStorage.setItem('theme', t); }
-    setTheme(savedTheme ?? (prefersDark ? 'dark' : 'light'));
-    document.getElementById('themeToggle')?.addEventListener('click', () => {
-      setTheme(root.classList.contains('dark') ? 'light' : 'dark');
+  (() => {
+    const list = document.querySelectorAll('.project-row');
+    const bar  = document.getElementById('projectFilters');
+    if (!bar || !list.length || bar.dataset.built === '1') return;
+
+    // 先清空，避免重複堆疊
+    bar.innerHTML = '';
+    bar.dataset.built = '1';
+
+    // 蒐集唯一標籤（保留原大小寫作為顯示）
+    const tagDisplay = new Map();
+    list.forEach(li => {
+      (li.dataset.tags || '')
+        .split(',').map(t => t.trim()).filter(Boolean)
+        .forEach(t => { const k = t.toLowerCase(); if (!tagDisplay.has(k)) tagDisplay.set(k, t); });
     });
 
-    // --- 行動選單 ---
-    const menuBtn = document.getElementById('menuBtn');
-    const navMenu = document.getElementById('navMenu');
-    menuBtn?.addEventListener('click', () => navMenu?.classList.toggle('hidden'));
+    const BTN_BASE =
+      'filter-btn inline-flex items-center rounded-full px-3 py-1 text-sm border transition ' +
+      'border-slate-300 bg-white text-slate-900 hover:bg-slate-50 ' +
+      'dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700';
 
-    // --- Header 陰影 & 返回頂部 ---
-    const header = document.querySelector('header');
-    const onScroll = () => {
-      if (window.scrollY > 6) header.classList.add('shadow-md'); else header.classList.remove('shadow-md');
-      document.getElementById('toTop').style.display = window.scrollY > 500 ? 'grid' : 'none';
+    const makeBtn = (label, value) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.dataset.value = value;   // 'all' or tag(lower)
+      b.className = BTN_BASE;
+      b.textContent = label;
+      return b;
     };
-    window.addEventListener('scroll', onScroll); onScroll();
 
-    // --- 導覽高亮 ---
-    (() => {
-      const file = location.pathname.split('/').pop() || 'index.html';
-      document.querySelectorAll('a[data-nav]').forEach(a=>{
-        const href = a.getAttribute('href');
-        const onHome = (file === 'index.html' || file === '');
-        if ((onHome && (href === './' || href.endsWith('index.html'))) || href.endsWith(file)) {
-          a.classList.add('border-b-2','border-slate-900','dark:border-white');
-        }
+    const allBtn = makeBtn('All', 'all');
+    bar.appendChild(allBtn);
+
+    // 只會生成一次，每個唯一 tag 一顆
+    [...tagDisplay.entries()]
+      .sort((a,b)=>a[1].localeCompare(b[1],'zh-Hant'))
+      .forEach(([k, disp]) => bar.appendChild(makeBtn(disp, k)));
+
+    // 高亮樣式：亮色=黑底白字；深色=白底黑字
+    function setActive(btn) {
+      bar.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('bg-slate-900','text-white','dark:bg-white','dark:!text-black');
+        b.setAttribute('aria-pressed','false');
       });
-    })();
+      btn.classList.add('bg-slate-900','text-white','dark:bg-white','dark:!text-black');
+      btn.setAttribute('aria-pressed','true');
+    }
 
-    // --- 滾動進場 ---
-    const revealEls = document.querySelectorAll('[data-reveal]');
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(entries => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            e.target.classList.add('opacity-100','translate-y-0');
-            e.target.classList.remove('opacity-0','translate-y-4');
-            io.unobserve(e.target);
-          }
-        }
-      }, { threshold: 0.15 });
-      revealEls.forEach(el => {
-        el.classList.add('opacity-0','translate-y-4','transition','duration-700','ease-out','will-change-transform');
-        io.observe(el);
+    function applyFilter(value) {
+      document.querySelectorAll('.project-row').forEach(li => {
+        const tags = (li.dataset.tags || '').split(',').map(s=>s.trim().toLowerCase());
+        li.classList.toggle('hidden', !(value === 'all' || tags.includes(value)));
       });
     }
 
-    // --- Quick view（單一 modal） ---
-    (function(){
-      const modal = document.getElementById('projectModal');
-      const mTitle = document.getElementById('mTitle');
-      const mDesc  = document.getElementById('mDesc');
-      const mTags  = document.getElementById('mTags');
-      const mLink  = document.getElementById('mLink');
-      const hide = () => modal.classList.add('hidden');
-      const show = () => modal.classList.remove('hidden');
+    bar.addEventListener('click', e => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      setActive(btn);
+      applyFilter(btn.dataset.value);
+    });
 
-      document.querySelectorAll('.js-open-modal').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          const row = btn.closest('.project-row');
-          mTitle.textContent = row.dataset.title || 'Untitled';
-          mDesc.textContent  = row.dataset.desc  || '';
-          mLink.href         = row.dataset.link  || '#';
-          mTags.innerHTML = '';
-          (row.dataset.tags || '').split(',').map(t=>t.trim()).filter(Boolean).forEach(t=>{
-            const span = document.createElement('span');
-            span.className = 'inline-block rounded-full bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-100 px-2 py-0.5 text-xs';
-            span.textContent = t;
-            mTags.appendChild(span);
-          });
-          show();
-        });
-      });
-      document.getElementById('mClose').onclick = hide;
-      document.getElementById('mClose2').onclick = hide;
-      modal.addEventListener('click', (e)=>{ if(e.target===modal) hide(); });
-      window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hide(); });
-    })();
-
-    // --- 分類按鈕（自動從 data-tags 生成） ---
-    (function () {
-      const list = document.querySelectorAll('.project-row');
-      const bar  = document.getElementById('projectFilters');
-      if (!bar || !list.length) return;
-
-      // 收集所有 tag（維持顯示字樣；比對用小寫）
-      const tagDisplay = new Map();
-      list.forEach(li => {
-        (li.dataset.tags || '')
-          .split(',')
-          .map(t => t.trim())
-          .filter(Boolean)
-          .forEach(t => {
-            const lower = t.toLowerCase();
-            if (!tagDisplay.has(lower)) tagDisplay.set(lower, t);
-          });
-      });
-
-      const makeBtn = (label, value) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.dataset.value = value; // 'all' 或 tag lower
-        btn.className = `
-          filter-btn inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm
-          border transition
-          border-slate-300 bg-white text-slate-900 hover:bg-slate-50
-          dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700
-        `.replace(/\s+/g,' ').trim();
-        btn.textContent = label;
-        return btn;
-      };
-
-      // 插入「All」
-      const allBtn = makeBtn('All', 'all');
-      bar.appendChild(allBtn);
-
-      // 依字母排序生成
-      [...tagDisplay.entries()]
-        .sort((a,b)=> a[1].localeCompare(b[1],'zh-Hant'))
-        .forEach(([lower, disp]) => bar.appendChild(makeBtn(disp, lower)));
-
-      const setActive = (btn) => {
-        bar.querySelectorAll('.filter-btn').forEach(b => {
-          b.classList.remove('bg-slate-900','text-white','dark:bg-white','dark:text-black');
-        });
-        btn.classList.add('bg-slate-900','text-white','dark:bg-white','dark:text-black');
-      };
-
-      const applyFilter = (value) => {
-        list.forEach(li => {
-          const tags = (li.dataset.tags || '').split(',').map(s=>s.trim().toLowerCase());
-          const show = value === 'all' ? true : tags.includes(value);
-          li.classList.toggle('hidden', !show);
-        });
-      };
-
-      bar.addEventListener('click', (e) => {
-        const btn = e.target.closest('.filter-btn');
-        if (!btn) return;
-        setActive(btn);
-        applyFilter(btn.dataset.value);
-      });
-
-      // 預設：All
-      setActive(allBtn);
-      applyFilter('all');
-    })();
-
-    // --- 返回頂部 ---
+    // 預設 All
+    setActive(allBtn);
+    applyFilter('all');
+  })();
+  // --- 返回頂部 ---
     document.getElementById('toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
