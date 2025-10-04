@@ -30,6 +30,7 @@
     <!-- nav -->
     <nav id="navMenu" class="hidden sm:flex items-center gap-6">
       <a data-nav href="./index.html" class="text-sm font-medium hover:opacity-80">Home</a>
+      <!-- Projects 底線 -->
       <a data-nav href="./projects.html" class="relative text-sm font-medium hover:opacity-80
             after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-2
             after:h-0.5 after:w-10 after:rounded-full after:bg-sky-500">Projects</a>
@@ -49,11 +50,9 @@
 
   <main class="max-w-[960px] mx-auto px-4 py-8">
 
-    <!-- Filters（自動生成分類按鈕會插在這裡） -->
+    <!-- Filters（只生成 All / Deep Learning / HCI） -->
     <div id="projectFilters" class="mb-2 flex flex-wrap gap-2" aria-label="篩選分類"></div>
 
-    <!-- 目前篩選顯示 -->
-    <div id="filterState" class="mb-4 hidden"></div>
     <!-- List（條列式，無圖片） -->
     <section data-reveal class="pb-16">
       <h2 class="sr-only">Projects</h2>
@@ -106,7 +105,7 @@
           </div>
         </li>
 
-        <!-- LSTM 筆記 -->
+        <!-- YOLOv10 + ByteTrack -->
         <li class="project-row p-4 hover:bg-slate-50/70 dark:hover:bg-slate-800/50 transition"
             data-tags="Audio"
             data-title="YOLOv10 + ByteTrack 天竺鼠行為記錄"
@@ -149,78 +148,6 @@
         </div>
       </div>
     </div>
-    <script>
-      // ===== 篩選（只顯示 All / Deep Learning / HCI）=====
-      (function () {
-        const rows = [...document.querySelectorAll('.project-row')];
-        const bar  = document.getElementById('projectFilters');
-        if (!bar || !rows.length) return;
-
-        // 只做這三個
-        const FILTERS = [
-          { label: 'All',            value: 'all' },
-          { label: 'Deep Learning',  value: 'deep learning' },
-          { label: 'HCI',            value: 'hci' },
-        ];
-
-        // 基礎樣式（未選取態）
-        const BTN_BASE = [
-          'filter-btn inline-flex items-center rounded-full px-3 py-1.5 text-sm',
-          'border transition',
-          'border-slate-300 bg-white text-slate-900 hover:bg-slate-50',
-          'dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700',
-          'relative after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 after:h-0.5 after:w-0 after:rounded-full after:bg-sky-200 after:transition-all'
-        ].join(' ');
-
-        // 選取態：淺色=黑底白字；深色=白底黑字；加淺藍底線（w-10）
-        function setActiveStyles(btn) {
-          btn.classList.add('bg-slate-900','text-white','dark:bg-white','dark:!text-black');
-          btn.classList.add('after:w-10'); // 淺藍底線出現
-        }
-        function clearActiveStyles() {
-          bar.querySelectorAll('.filter-btn').forEach(b=>{
-            b.classList.remove('bg-slate-900','text-white','dark:bg-white','dark:!text-black','after:w-10');
-            b.setAttribute('aria-pressed','false');
-          });
-        }
-
-        // 產生按鈕
-        bar.innerHTML = '';
-        FILTERS.forEach(f=>{
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.dataset.value = f.value;
-          btn.textContent = f.label;
-          btn.className = BTN_BASE;
-          btn.setAttribute('aria-pressed','false');
-          bar.appendChild(btn);
-        });
-
-        // 套用篩選
-        function applyFilter(value){
-          rows.forEach(li=>{
-            const tags = (li.dataset.tags||'').split(',').map(s=>s.trim().toLowerCase());
-            const show = (value==='all') || tags.includes(value);
-            li.classList.toggle('hidden', !show);
-          });
-        }
-
-        // 點擊
-        bar.addEventListener('click', (e)=>{
-          const btn = e.target.closest('.filter-btn'); if (!btn) return;
-          clearActiveStyles();
-          setActiveStyles(btn);
-          btn.setAttribute('aria-pressed','true');
-          applyFilter(btn.dataset.value);
-        });
-
-        // 預設 All
-        const first = bar.querySelector('.filter-btn[data-value="all"]');
-        clearActiveStyles(); setActiveStyles(first); first.setAttribute('aria-pressed','true');
-        applyFilter('all');
-      })();
-    </script>
-
 
     <!-- Footer -->
     <footer id="contact" class="py-10 text-center">
@@ -233,74 +160,131 @@
 
   <!-- Scripts -->
   <script>
-  (() => {
-    const list = document.querySelectorAll('.project-row');
-    const bar  = document.getElementById('projectFilters');
-    if (!bar || !list.length || bar.dataset.built === '1') return;
-
-    // 先清空，避免重複堆疊
-    bar.innerHTML = '';
-    bar.dataset.built = '1';
-
-    // 蒐集唯一標籤（保留原大小寫作為顯示）
-    const tagDisplay = new Map();
-    list.forEach(li => {
-      (li.dataset.tags || '')
-        .split(',').map(t => t.trim()).filter(Boolean)
-        .forEach(t => { const k = t.toLowerCase(); if (!tagDisplay.has(k)) tagDisplay.set(k, t); });
+    // 主題切換按鈕（可保留或移除）
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function setTheme(t){ root.classList.toggle('dark', t === 'dark'); localStorage.setItem('theme', t); }
+    setTheme(savedTheme ?? (prefersDark ? 'dark' : 'light'));
+    document.getElementById('themeToggle')?.addEventListener('click', () => {
+      setTheme(root.classList.contains('dark') ? 'light' : 'dark');
     });
 
-    const BTN_BASE =
-      'filter-btn inline-flex items-center rounded-full px-3 py-1 text-sm border transition ' +
-      'border-slate-300 bg-white text-slate-900 hover:bg-slate-50 ' +
-      'dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700';
+    // 行動選單
+    document.getElementById('menuBtn')?.addEventListener('click', ()=>{
+      document.getElementById('navMenu')?.classList.toggle('hidden');
+    });
 
-    const makeBtn = (label, value) => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.dataset.value = value;   // 'all' or tag(lower)
-      b.className = BTN_BASE;
-      b.textContent = label;
-      return b;
-    };
+    // ===== Quick View（穩定版）=====
+    (function(){
+      const modal  = document.getElementById('projectModal');
+      const mTitle = document.getElementById('mTitle');
+      const mDesc  = document.getElementById('mDesc');
+      const mTags  = document.getElementById('mTags');
+      const mLink  = document.getElementById('mLink');
 
-    const allBtn = makeBtn('All', 'all');
-    bar.appendChild(allBtn);
+      const show = () => { modal.classList.remove('hidden'); modal.classList.add('flex'); document.body.style.overflow='hidden'; };
+      const hide = () => { modal.classList.add('hidden'); modal.classList.remove('flex'); document.body.style.overflow=''; };
 
-    // 只會生成一次，每個唯一 tag 一顆
-    [...tagDisplay.entries()]
-      .sort((a,b)=>a[1].localeCompare(b[1],'zh-Hant'))
-      .forEach(([k, disp]) => bar.appendChild(makeBtn(disp, k)));
+      document.querySelectorAll('.js-open-modal').forEach(btn=>{
+        btn.addEventListener('click', (e)=>{
+          e.preventDefault(); e.stopPropagation();
+          const row = btn.closest('.project-row'); if (!row) return;
 
-    // 高亮樣式：亮色=黑底白字；深色=白底黑字
-    function setActive(btn) {
-      bar.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.remove('bg-slate-900','text-white','dark:bg-white','dark:!text-black');
+          mTitle.textContent = row.dataset.title || 'Untitled';
+          mDesc.textContent  = row.dataset.desc  || '';
+          mLink.href         = row.dataset.link  || '#';
+
+          mTags.innerHTML = '';
+          (row.dataset.tags||'').split(',').map(t=>t.trim()).filter(Boolean).forEach(t=>{
+            const s = document.createElement('span');
+            s.className = 'inline-block rounded-full bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-100 px-2 py-0.5 text-xs';
+            s.textContent = t;
+            mTags.appendChild(s);
+          });
+
+          show();
+        });
+      });
+      document.getElementById('mClose')?.addEventListener('click', hide);
+      document.getElementById('mClose2')?.addEventListener('click', hide);
+      modal.addEventListener('click', e=>{ if (e.target === modal) hide(); });
+      window.addEventListener('keydown', e=>{ if (e.key === 'Escape') hide(); });
+    })();
+
+    // ===== 篩選：All / Deep Learning / HCI（藍框＋底線；依主題換底色）=====
+    (function () {
+      const rows = [...document.querySelectorAll('.project-row')];
+      const bar  = document.getElementById('projectFilters');
+      if (!bar || !rows.length) return;
+
+      const FILTERS = [
+        { label: 'All',           value: 'all' },
+        { label: 'Deep Learning', value: 'deep learning' },
+        { label: 'HCI',           value: 'hci' },
+      ];
+
+      // 未選取
+      const BTN_BASE = [
+        'filter-btn inline-flex items-center rounded-full px-3 py-1.5 text-sm',
+        'border transition',
+        'border-slate-300 bg-white text-slate-900 hover:bg-slate-50',
+        'dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700',
+        'relative after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1',
+        'after:h-0.5 after:w-0 after:rounded-full after:bg-sky-200 after:transition-all'
+      ].join(' ');
+
+      function clearActive() {
+        bar.querySelectorAll('.filter-btn').forEach(b=>{
+          b.classList.remove(
+            'border-sky-400','ring-2','ring-sky-200',
+            'bg-white','text-black','dark:bg-slate-900','dark:text-white',
+            'after:w-10'
+          );
+          b.setAttribute('aria-pressed','false');
+        });
+      }
+      function setActive(btn) {
+        // 藍色框
+        btn.classList.add('border-sky-400','ring-2','ring-sky-200');
+        // 淺色 = 白底黑字；深色 = 黑底白字
+        btn.classList.add('bg-white','text-black','dark:bg-slate-900','dark:text-white');
+        // 淡藍底線
+        btn.classList.add('after:w-10');
+        btn.setAttribute('aria-pressed','true');
+      }
+
+      // 建按鈕
+      bar.innerHTML = '';
+      FILTERS.forEach(f=>{
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.dataset.value = f.value;
+        b.className = BTN_BASE;
+        b.textContent = f.label;
         b.setAttribute('aria-pressed','false');
+        bar.appendChild(b);
       });
-      btn.classList.add('bg-slate-900','text-white','dark:bg-white','dark:!text-black');
-      btn.setAttribute('aria-pressed','true');
-    }
 
-    function applyFilter(value) {
-      document.querySelectorAll('.project-row').forEach(li => {
-        const tags = (li.dataset.tags || '').split(',').map(s=>s.trim().toLowerCase());
-        li.classList.toggle('hidden', !(value === 'all' || tags.includes(value)));
+      function applyFilter(value){
+        rows.forEach(li=>{
+          const tags = (li.dataset.tags||'').split(',').map(s=>s.trim().toLowerCase());
+          const show = (value==='all') || tags.includes(value);
+          li.classList.toggle('hidden', !show);
+        });
+      }
+
+      bar.addEventListener('click', e=>{
+        const btn = e.target.closest('.filter-btn'); if (!btn) return;
+        clearActive(); setActive(btn); applyFilter(btn.dataset.value);
       });
-    }
 
-    bar.addEventListener('click', e => {
-      const btn = e.target.closest('.filter-btn');
-      if (!btn) return;
-      setActive(btn);
-      applyFilter(btn.dataset.value);
-    });
+      // 預設 All
+      const allBtn = bar.querySelector('[data-value="all"]');
+      clearActive(); setActive(allBtn); applyFilter('all');
+    })();
 
-    // 預設 All
-    setActive(allBtn);
-    applyFilter('all');
-  })();
-  // --- 返回頂部 ---
+    // Back to top
     document.getElementById('toTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
