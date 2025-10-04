@@ -150,127 +150,77 @@
       </div>
     </div>
     <script>
-      // ====== 分類按鈕（自動生成 + 彩色高亮 + 狀態 chip）======
+      // ===== 篩選（只顯示 All / Deep Learning / HCI）=====
       (function () {
-        const rows = document.querySelectorAll('.project-row');
+        const rows = [...document.querySelectorAll('.project-row')];
         const bar  = document.getElementById('projectFilters');
-        const state = document.getElementById('filterState');
         if (!bar || !rows.length) return;
 
-        // 顏色對應（小寫為 key；可自行擴充）
-        const COLORS = {
-          'deep learning': {btn:'bg-sky-600 text-white', chip:'bg-sky-100 text-sky-800 dark:bg-sky-900/30 dark:text-sky-200', ring:'ring-sky-400'},
-          'hci':           {btn:'bg-fuchsia-600 text-white', chip:'bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900/30 dark:text-fuchsia-200', ring:'ring-fuchsia-400'},
-          'cv':            {btn:'bg-indigo-600 text-white', chip:'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-200', ring:'ring-indigo-400'},
-          'audio':         {btn:'bg-emerald-600 text-white', chip:'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-200', ring:'ring-emerald-400'},
-          'all':           {btn:'bg-slate-900 text-white dark:bg-white dark:text-black', chip:'bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-100', ring:'ring-slate-400'},
-        };
-        const BTN_BASE = 'filter-btn inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm border transition border-slate-300 bg-white text-slate-900 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700';
+        // 只做這三個
+        const FILTERS = [
+          { label: 'All',            value: 'all' },
+          { label: 'Deep Learning',  value: 'deep learning' },
+          { label: 'HCI',            value: 'hci' },
+        ];
 
-        // 收集所有 tag（顯示維持原樣；比對用小寫）
-        const tagDisplay = new Map();
-        rows.forEach(li => {
-          (li.dataset.tags || '')
-            .split(',')
-            .map(t => t.trim())
-            .filter(Boolean)
-            .forEach(t => {
-              const lower = t.toLowerCase();
-              if (!tagDisplay.has(lower)) tagDisplay.set(lower, t);
-            });
+        // 基礎樣式（未選取態）
+        const BTN_BASE = [
+          'filter-btn inline-flex items-center rounded-full px-3 py-1.5 text-sm',
+          'border transition',
+          'border-slate-300 bg-white text-slate-900 hover:bg-slate-50',
+          'dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700',
+          'relative after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-1 after:h-0.5 after:w-0 after:rounded-full after:bg-sky-200 after:transition-all'
+        ].join(' ');
 
-          // 幫每個 badge 補 data-tag，之後好高亮
-          li.querySelectorAll('span').forEach(sp => {
-            const txt = (sp.textContent || '').trim().toLowerCase();
-            if (txt) sp.dataset.tag = txt;
+        // 選取態：淺色=黑底白字；深色=白底黑字；加淺藍底線（w-10）
+        function setActiveStyles(btn) {
+          btn.classList.add('bg-slate-900','text-white','dark:bg-white','dark:!text-black');
+          btn.classList.add('after:w-10'); // 淺藍底線出現
+        }
+        function clearActiveStyles() {
+          bar.querySelectorAll('.filter-btn').forEach(b=>{
+            b.classList.remove('bg-slate-900','text-white','dark:bg-white','dark:!text-black','after:w-10');
+            b.setAttribute('aria-pressed','false');
           });
-        });
+        }
 
         // 產生按鈕
-        const makeBtn = (label, value) => {
+        bar.innerHTML = '';
+        FILTERS.forEach(f=>{
           const btn = document.createElement('button');
           btn.type = 'button';
-          btn.dataset.value = value; // 'all' 或 tag lower
+          btn.dataset.value = f.value;
+          btn.textContent = f.label;
           btn.className = BTN_BASE;
-          btn.textContent = label;
           btn.setAttribute('aria-pressed','false');
-          return btn;
-        };
+          bar.appendChild(btn);
+        });
 
-        // 插入 All
-        const allBtn = makeBtn('All', 'all');
-        bar.appendChild(allBtn);
-
-        // 依字母排序插入其它 tags
-        [...tagDisplay.entries()]
-          .sort((a,b)=> a[1].localeCompare(b[1],'zh-Hant'))
-          .forEach(([lower, disp]) => bar.appendChild(makeBtn(disp, lower)));
-
-        function styleActiveBtn(btn /*, value */) {
-          // 亮色：黑底白字；深色：白底黑字（! 代表強制覆蓋）
-          const ACTIVE =
-            'bg-slate-900 text-white dark:bg-white dark:!text-black';
-
-          btn.className = `${BTN_BASE} ${ACTIVE}`;
-          btn.setAttribute('aria-pressed','true');
-        }
-        function styleActiveBtn(btn, value) {
-          const c = COLORS[value] || COLORS['all'];
-          btn.className = `${BTN_BASE} ${c.btn}`;
-          btn.setAttribute('aria-pressed','true');
-        }
-        function updateStateChip(value) {
-          const disp = value === 'all' ? 'All' : (tagDisplay.get(value) || value);
-          const c = COLORS[value] || COLORS['all'];
-          state.classList.remove('hidden');
-          state.innerHTML = `
-            <div class="flex items-center gap-2 text-sm">
-              <span class="opacity-70">Currently:</span>
-              <span class="inline-flex items-center rounded-full ${c.chip} px-2 py-0.5">${disp}</span>
-            </div>
-          `;
-        }
-        function highlightBadges(value) {
-          rows.forEach(li => {
-            li.querySelectorAll('[data-tag]').forEach(sp => {
-              // 先全部降透明、去描邊
-              sp.classList.remove('font-semibold','ring-2','ring-offset-2','ring-offset-white','dark:ring-offset-slate-900','ring-sky-400','ring-fuchsia-400','ring-indigo-400','ring-emerald-400','ring-slate-400');
-              sp.style.opacity = value === 'all' ? '1' : '0.45';
-            });
-            if (value === 'all') return;
-            // 高亮符合的 badge
-            const c = COLORS[value] || COLORS['all'];
-            li.querySelectorAll(`[data-tag="${value}"]`).forEach(sp => {
-              sp.style.opacity = '1';
-              sp.classList.add('font-semibold','ring-2', c.ring, 'ring-offset-2','ring-offset-white','dark:ring-offset-slate-900');
-            });
-          });
-        }
-        function applyFilter(value) {
-          rows.forEach(li => {
-            const tags = (li.dataset.tags || '').split(',').map(s=>s.trim().toLowerCase());
-            const show = value === 'all' ? true : tags.includes(value);
+        // 套用篩選
+        function applyFilter(value){
+          rows.forEach(li=>{
+            const tags = (li.dataset.tags||'').split(',').map(s=>s.trim().toLowerCase());
+            const show = (value==='all') || tags.includes(value);
             li.classList.toggle('hidden', !show);
           });
-          highlightBadges(value);
-          updateStateChip(value);
         }
 
-        // 點擊行為
-        bar.addEventListener('click', (e) => {
-          const btn = e.target.closest('button[data-value]');
-          if (!btn) return;
-          clearBtnStyles();
-          styleActiveBtn(btn, btn.dataset.value);
+        // 點擊
+        bar.addEventListener('click', (e)=>{
+          const btn = e.target.closest('.filter-btn'); if (!btn) return;
+          clearActiveStyles();
+          setActiveStyles(btn);
+          btn.setAttribute('aria-pressed','true');
           applyFilter(btn.dataset.value);
         });
 
-        // 預設：All
-        clearBtnStyles();
-        styleActiveBtn(allBtn, 'all');
+        // 預設 All
+        const first = bar.querySelector('.filter-btn[data-value="all"]');
+        clearActiveStyles(); setActiveStyles(first); first.setAttribute('aria-pressed','true');
         applyFilter('all');
       })();
     </script>
+
 
     <!-- Footer -->
     <footer id="contact" class="py-10 text-center">
