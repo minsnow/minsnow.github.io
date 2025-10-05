@@ -178,20 +178,12 @@
       document.querySelectorAll('a[data-nav]').forEach(a => {
         const href = a.getAttribute('href') || '';
         const onHome = (file === 'index.html' || file === '');
-        const isCurrent =
-          (onHome && (href === './' || href.endsWith('index.html'))) ||
-          href.endsWith(file);
-
-        if (isCurrent) {
-          a.classList.add(
-            'relative',
-            'after:absolute','after:left-1/2','after:-translate-x-1/2','after:-bottom-2',
-            'after:h-0.5','after:w-10','after:rounded-full',
-            'after:bg-sky-500'
-          );
+        if ((onHome && (href.endsWith('index.html'))) || href.endsWith(file)) {
+          a.classList.add('border-b-2','border-slate-900','dark:border-slate-100');
         }
       });
     })();
+    
     // ===== Quick View（穩定版）=====
     (function(){
       const modal  = document.getElementById('projectModal');
