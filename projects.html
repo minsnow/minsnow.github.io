@@ -31,9 +31,7 @@
     <nav id="navMenu" class="hidden sm:flex items-center gap-6">
       <a data-nav href="./index.html" class="text-sm font-medium hover:opacity-80">Home</a>
       <!-- Projects 底線 -->
-      <a data-nav href="./projects.html" class="relative text-sm font-medium hover:opacity-80
-            after:absolute after:left-1/2 after:-translate-x-1/2 after:-bottom-2
-            after:h-0.5 after:w-10 after:rounded-full after:bg-sky-500">Projects</a>
+      <a data-nav href="./projects.html" class="text-sm font-medium hover:opacity-80">Projects</a>
       <a data-nav href="./about.html" class="text-sm font-medium hover:opacity-80">About</a>
     </nav>
 
@@ -175,6 +173,25 @@
       document.getElementById('navMenu')?.classList.toggle('hidden');
     });
 
+    (() => {
+      const file = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('a[data-nav]').forEach(a => {
+        const href = a.getAttribute('href') || '';
+        const onHome = (file === 'index.html' || file === '');
+        const isCurrent =
+          (onHome && (href === './' || href.endsWith('index.html'))) ||
+          href.endsWith(file);
+
+        if (isCurrent) {
+          a.classList.add(
+            'relative',
+            'after:absolute','after:left-1/2','after:-translate-x-1/2','after:-bottom-2',
+            'after:h-0.5','after:w-10','after:rounded-full',
+            'after:bg-sky-500'
+          );
+        }
+      });
+    })();
     // ===== Quick View（穩定版）=====
     (function(){
       const modal  = document.getElementById('projectModal');
